@@ -12,49 +12,49 @@
 				<h2>Register</h2>
 			</div>
 			<div class="input-form">
-				<form action="#">
-				<div class="input-field">
-					<input class="input" type="text" name="fname">
-					<label class="input-label">
-						<span>
-							Full Name
-						</span>
-					</label>
-				</div>					
-				<div class="input-field">
-					<input class="input" type="text" name="pname">
-					<label class="input-label">
-						<span>
-							Father's Name
-						</span>
-					</label>
-				</div>
-				<div class="input-field">
-					<input class="input" type="text" name="address">
-					<label class="input-label">
-						<span>
-							Address
-						</span>
-					</label>
-				</div>
-				<div class="input-field">
-					<input class="input" type="number" name="mobile">
-					<label class="input-label">
-						<span>
-							Mobile
-						</span>
-					</label>
-				</div>
-				<div class="input-field">
-					<input class="input" type="email" name="email">
-					<label class="input-label">
-						<span>
-							Email
-						</span>
-					</label>
-				</div>
+				<form action="#" onsubmit="checkEveryThing(this.id)">
+					<div class="input-field">
+						<input class="input" type="text" name="fname" required="" maxlength="100">
+						<label class="input-label">
+							<span>
+								Full Name
+							</span>
+						</label>
+					</div>					
+					<div class="input-field">
+						<input class="input" type="text" name="pname" required="" maxlength="100">
+						<label class="input-label">
+							<span>
+								Father's Name
+							</span>
+						</label>
+					</div>
+					<div class="input-field">
+						<input class="input" type="text" name="address" required="true" maxlength="100">
+						<label class="input-label">
+							<span>
+								Address
+							</span>
+						</label>
+					</div>
+					<div class="input-field">
+						<input class="input" type="number" name="mobile" required="" maxlength="10">
+						<label class="input-label">
+							<span>
+								Mobile
+							</span>
+						</label>
+					</div>
+					<div class="input-field">
+						<input class="input" type="email" name="email" required="">
+						<label class="input-label">
+							<span>
+								Email
+							</span>
+						</label>
+					</div>
 
-				<input class="input-submit" type="submit" name="submit" value="Register">							
+					<input class="input-submit" type="submit" name="register" value="Register">							
 				</form>
 			</div>
 			<div class="input-suggestion">	
@@ -69,5 +69,6 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="js/validate.js"></script>
 </body>
 </html>

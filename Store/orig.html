@@ -9,7 +9,6 @@
   <script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
 function box_hide1(){
     document.getElementById('home_box_content').style.display='none';
     document.getElementById('box_id1').style.display='none';
@@ -297,7 +296,6 @@ li:hover{
 
 .m{
     border:0px;
-    z-index: 1;
 }
 
 #menu-toggle{
@@ -308,10 +306,6 @@ li:hover{
     height: 50px;
     margin-top: 0%;
     margin-left: 0%;
-}
-
-.glyphicon.glyphicon-home{
-    display: none;
 }
 
 #menu-toggle:hover{
@@ -346,261 +340,39 @@ li:hover{
 
 
 
-.table_box{
-    border-collapse: separate;
-    width:30vw;
-    height: 37vw;
+.ul_1:first-of-type{
+    margin-top: 15%;
 }
 
-
-.table_box li{
-    list-style: none;
-    border: 0px;
-}
-.table_box a{
-    padding: 22%;
+.ul_1 > li{
+    display: inline-block;
     text-decoration: none;
-    color:  white;
-    background-color:  rgb(150,150,150);
-    border: 5px solid rgb(200,200,200);
-}
-
-
-.table_box a:hover, .table_box a:focus{
-    background-color:  rgb(100,100,100);
-}
-
-.table_box li:hover{
-    background-color:white;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#add_item_text{
-    font-size: 250%;
-    font-weight: 500;
-    color: rgb(0, 179, 143);
-}
-
-#add_item > div:first-of-type :hover{
-    background-color: rgb(245,245,245);
-    border-radius: 8%;
-}
-
-.cart_class{
-    max-width: 25%;
-    display:inline-block;
-    margin: 2%;
-}
-
-.cart_class:first-of-type{
-    margin-left: -2%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media(max-width:479px) {
-.table_box{
-    border-collapse: separate;
-    width:65vw;
-    height: 90vw;
-}
-
-.glyphicon.glyphicon-pushpin{
-    display: none;
-}
-
-.glyphicon.glyphicon-home{
-    display: block;
-}
-
-.m{
+    color: black;   
     border: 0px;
-    width: 45px;
-    height: 45px;   
+    padding: 10%;
+    margin: 3%;
 }
 
-#menu-toggle{
-    position: fixed;
-    background-color:#04B173;
+.ul_1 > li:hover{
+    background-color: white;
+}
+
+.ul_1 > li > a{
+    text-decoration: none;
+    color: black;
+    background-color: rgb(150,150,150);
+    border: 15px double rgb(200,200,200);
+    margin-left: -50%;
+    padding: 50%;
+
+}
+
+.ul_1 > li > a:hover{
+    text-decoration: none;
     color: white;
-    width: 45px;
-    height: 45px;
-    margin-top: 0%;
-    margin-left: 0%;
+    background-color: rgb(100,100,100);
+    
 }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media(max-width:767px) {
-.table_box{
-    border-collapse: separate;
-    width:65vw;
-    height: 90vw;
-}
-
-.glyphicon.glyphicon-pushpin{
-    display: none;
-}
-
-.glyphicon.glyphicon-home{
-    display: block;
-}
-
-.m{
-    border: 0px;
-    width: 45px;
-    height: 45x;   
-}
-
-#menu-toggle{
-    position: fixed;
-    background-color:#04B173;
-    color: white;
-    width: 45px;
-    height: 45px;
-    margin-top: 0%;
-    margin-left: 0%;
-}
-
-#add_item_text{
-    font-size: 100%;
-}
-
-}
-
-
-
 
 
 
@@ -662,7 +434,7 @@ li:hover{
                     <a href="#1" id="home_sidenav" onclick="home_sidenav()">Home</a>
                 </li>
                 <li>
-                    <a href="#box1" id="box_id1" onclick="box_hide1()" style="display: none;">Item</a>
+                    <a href="#box1" id="box_id1" onclick="box_hide1()" style="display: none;">Box1</a>
                 </li>
                 <li>
                     <a href="#box2" id="box_id2" onclick="box_hide2()" style="display: none;">Box2</a>
@@ -709,7 +481,7 @@ li:hover{
             <div class="container-fluid">
             <ul class="nav navbar-nav navbar-left">
                     <li class="m">
-                        <a href="#side_menu" id="menu-toggle"><span class="glyphicon glyphicon-pushpin"></span><span class="glyphicon glyphicon-home" onclick="home_sidenav()"></span></a>
+                        <a href="#side_menu" id="menu-toggle"><span class="glyphicon glyphicon-pushpin"></span></a>
                     </li>
                 </ul>
 
@@ -718,33 +490,17 @@ li:hover{
               
 
                 <nav class="icon_box">
-                    <ul class="ul_box">
-                        <table class="table_box">
-                            <tr>
-                                <td>
-                                    <li><a href="#item" onclick="box_hide1()">Item</a></li>
-                                </td>
-                                <td>
-                                    <li><a href="#box2" onclick="box_hide2()">Box2</a></li>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <li><a href="#box3" onclick="box_hide3()">Box3</a></li>
-                                </td>
-                                <td>
-                                    <li><a href="#box4" onclick="box_hide4()">Box4</a></li>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <li><a href="#box5" onclick="box_hide5()">Box5</a></li>
-                                </td>
-                                <td>
-                                    <li><a href="#box6" onclick="box_hide6()">Box6</a></li>
-                                </td>
-                            </tr>
-                        </table>
+                    <ul class="ul_1">
+                        <li class="row_1_box_1" ><a href="#box1" onclick="box_hide1()">Box1</a></li>
+                        <li class="row_1_box_2" ><a href="#box2" onclick="box_hide2()">Box2</a></li>
+                    </ul>
+                    <ul class="ul_1">
+                        <li class="row_1_box_1" ><a href="#box3" onclick="box_hide3()">Box3</a></li>
+                        <li class="row_1_box_2" ><a href="#box4" onclick="box_hide4()">Box4</a></li>
+                    </ul>
+                    <ul class="ul_1">
+                        <li class="row_1_box_1" ><a href="#box5" onclick="box_hide5()">Box5</a></li>
+                        <li class="row_1_box_2" ><a href="#box6" onclick="box_hide6()">Box6</a></li>
                     </ul>
                 </nav>
 
@@ -760,238 +516,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec nisl odio
 <br><br><br><br><br><br><br><br><br><br><br>&copy All rights reserved.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
         </div>
-
-
-
-
 <div id="box_detail1" style="display: none;">
-    <div class="cart_class" id="add_item" ><div style="margin-top: 30%;"><input type="image" src="images/icons/cart(1).png" width="100%" height="100%" alt="Add Item" data-toggle="modal" data-target="#popUpWindow"></div><div id="add_item_text" style="text-align: center;">Add</div></div>
-
-    <div id="add_item" class="cart_class"><div style="margin-top: 30%;"><input type="image" src="images/icons/cart(2).png" width="100%" height="100%" alt="Add Item" data-toggle="modal" data-target="#popUpWindow"></div><div id="add_item_text" style="text-align: center;">Update</div></div>
-
-    <div id="add_item" class="cart_class"><div style="margin-top: 30%;"><input type="image" src="images/icons/cart(3).png" width="100%" height="100%" alt="Add Item" data-toggle="modal" data-target="#popUpWindow"></div><div id="add_item_text" style="text-align: center;">Delete</div></div>
-
-    <div id="add_item" class="cart_class"><div style="margin-top: 30%;"><input type="image" src="images/icons/receipt.png" width="100%" height="100%" alt="Add Item" data-toggle="modal" data-target="#popUpWindow"></div><div id="add_item_text" style="text-align: center;">Scan Bills</div></div>
-
-    <div id="add_item" class="cart_class"><div style="margin-top: 30%;"><input type="image" src="images/icons/pdf.png" width="100%" height="100%" alt="Add Item" data-toggle="modal" data-target="#popUpWindow"></div><div id="add_item_text" style="text-align: center;">.pdf bill</div></div>    
-    <div class="modal fade" id="popUpWindow">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <div class="modal-title"><span class="glyphicon glyphicon-file"></span>Add a Note</span>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <form role="form" action="note1.php" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label><span class="glyphicon glyphicon-pencil"></span>Title</label>
-                            <input type="text" id="title" name="title" class="form-control" placeholder="Your Title Name">
-                        </div>
-                        <div class="form-group">
-                            <label><span class="glyphicon glyphicon-hand-right"></span>Content</label>
-                            <textarea type="textarea" id="textarea" name="textarea" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label><span class="glyphicon glyphicon-calendar"></span>Deadline</label>
-                            <input type="time" id="deadline" name="deadline" style="border-radius:5px; height:30px; width:120px; ">
-                            <span id="priority">
-                            <label><span class="glyphicon glyphicon-chevron-down"></span>Priority</label>
-                            <select id="priority_1" name="priority1" style="border-radius:5px; height:30px; width:120px">
-                                <option id="vimp" name="vimp" style="color:#ff2a00">Very Important</option>
-                                <option id="imp" name="imp" style="color:#ff8c00">Important</option>
-                                <option id="normal" name="normal" style="color:#32e025">Normal</option>
-                                <option id="least" name="least" style="color:#2983ff">Least</option>
-                            </select>
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <label><span class="glyphicon glyphicon-paperclip"></span>Image Name(Optional)</label>
-                            <input class="form-control" id="image_name" name="image_name" placeholder="Image Name">
-                        </div>
-                        <div class="form-group">
-                        <label><span class="glyphicon glyphicon-upload"></span>Select Image</label>
-                        <input type="file" name="image" id="image">
-                        </div>
-                        <div class="form-group">
-                            <span style="color:red">*</span><span style="font-style:oblique;">Make sure file to be image and less than 1MB<span></span>
-                        </div>
-                         <div class="checkbox">
-                            <label><input type="checkbox" id="done" name="done" value="1">Mark as Done</label>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="compose" name="compose" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok-circle"</span> Compose</button>
-                    </form>
-                    <button type="submit"  class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
-
-                </div>
-            </div>
-        </div>
-      </div>
+    Box1
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="box_detail2" style="display: none;">
     Box2
 </div>
