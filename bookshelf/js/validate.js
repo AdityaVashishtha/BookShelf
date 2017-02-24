@@ -32,6 +32,39 @@ function validate(argument) {
 	}
 }
 
+function checkEveryThing() {
+	var X = document.querySelectorAll("input[name=fname]")[0];
+	fname = X.value;
+	X = document.querySelectorAll("input[name=pname]")[0];
+	pname = X.value;
+	X = document.querySelectorAll("input[name=address]")[0];
+	address = X.value;
+	X = document.querySelectorAll("input[name=mobile]")[0];
+	mobile = X.value;
+	X = document.querySelectorAll("input[name=email]")[0];
+	email = X.value;
+	var isCorrect = /[1-9]|[@#$%]/.test(fname);
+	//alert(isCorrect);
+	if(isCorrect || fname.length < 8) {
+		alert("Not a Valid Name");
+	}
+	isCorrect = /[1-9]|[@#$%]/.test(pname);
+	if(isCorrect || pname.length < 8) {
+		alert("Not a Valid Father's Name");
+	}
+	if(address.length < 10) {
+		alert("Not a Valid Address");
+	}
+	isCorrect = /[a-z|1-9]*[@][a-z|1-9]*[.][a-z|1-9]*/.test(email);
+	if(!isCorrect || email.length < 8) {
+		alert("Not a Valid Email");
+	}
+	isCorrect = /[a-z|@$%#]*/.test(mobile);
+	if(mobile.length < 10) { //|| (mobile.length < 10) || (mobile.length > 10)) {
+		alert("Not a Valid Mobile");
+	}
+}
+
 var submitButton = document.querySelectorAll("input[name=submit]")[0];
 submitButton.disabled =true;
 submitButton.style.cursor = "not-allowed";
