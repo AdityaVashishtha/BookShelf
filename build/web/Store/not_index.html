@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Store</title>
+	     <style>
+body {
+	margin: 0;
+	width: 100%;
+    background-position:center;
+    background-image:url("images/icons/back.jpg");
+    color:#fff;
+    position: fixed;
+}
+
+ul.topnav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(100,100,100);
+}
+
+li {
+    border-right: 1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
+    border-left: 1px solid #bbb;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: rgb(200,200,200);}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
+}
+
+
+
+	* {
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	}
+
+	.login {
+	  display: none;	
+	  position: relative;
+	  left: 30%;
+	  margin-top: 15%;
+	  width: 30em;
+	  height: 15rem;
+	  padding: 20px;
+	  background: #fff;
+	  border-radius: 5px;
+	  overflow: hidden;
+	}
+
+	.login:hover > .login-head{
+	  width: 2rem;
+	}
+	.login:hover > .login-head > .text{
+	  font-size: 1rem;
+	  transform: rotate(-90deg);
+	}
+	
+	.login-head {
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  z-index: 1;
+	  width: 30em;
+	  height: 15rem;
+	  background: orange;
+	  transition: width 0.5s ease-in-out;
+	}
+	.login-head > .text {
+	  display: block;
+	  width: 100%;
+	  height: 100%;
+	  font-size: 5rem;
+	  text-align: center;
+	  line-height: 15rem;
+	  color: #fff;
+	  transition: all 0.5s ease-in-out;
+	}
+
+	.login-form {
+		margin-left: 2em ;
+	}
+
+	.login-input {
+	  width: 100%;
+	  font-size: 1.8rem;
+	  margin: 10px;
+	  box-shadow: 5px 5px 5px orange;
+	  border-color: #ccc;
+	  border-width: 0 0 2px 0;
+	  border-radius: 10px;
+
+	}
+
+	.login-input:focus {
+	  background-color: rgba(255,153,0,0.9);
+	  color: white;
+	  box-shadow: 5px 5px 5px #888;
+	}
+	.login-btn{
+		width:50px;
+		height:50px;
+		float :right;
+		margin-top: 5%;
+		margin-right: 5%;
+		border-radius: 50%;
+		opacity: 0.9;
+	}
+
+	.login-btn:hover{
+		width:60px;
+		height:60px;
+		transition: all 0.2s ease-in-out;
+	}
+
+table {
+    border-collapse: separate;
+    border-spacing: 30px 30px;
+    float: left;
+    padding-right: 40px;
+}
+
+td{
+    padding: 50px;
+    border-radius: 6px;
+    border: 13px double rgb(150,150,150);
+	background-color: rgb(200,200,200);
+}
+
+td a{
+	text-decoration: none;
+	color: black;
+	font-size: 1rem; 
+	font-weight: bold;
+}
+
+td:hover{
+	background-color: rgb(100,100,100);
+}
+
+#right_content{
+	padding-right: 50px;
+}
+
+</style>
+
+</head>
+
+<body id="body">
+
+
+
+<script>
+var flag=0;
+function login() {
+	if(flag==0){
+	document.getElementById("login-hide").style.display = 'block';
+	document.getElementById("main_div").style.display = 'none';
+	flag=1;
+	}
+	else{
+	document.getElementById("login-hide").style.display = 'none';
+	document.getElementById("main_div").style.display = 'block';
+	flag=0;	
+	}
+
+}
+
+
+</script> 
+
+
+
+<ul class="topnav">
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact" onclick="login()">Login</a></li>
+  <li class="right"><a href="#about">More</a></li>
+</ul>
+
+	  				<div class="login" id="login-hide">
+					<div class="login-head"><span class="text">LOGIN</span></div>
+					<form action="#" method="POST" enctype="multipart/form-data" class="login-form">
+					<input type="text" name="username" placeholder=" Username" class="login-input"/>
+					<input type="password" name="password" placeholder=" Password" class="login-input"/>
+					<br>
+					<br>
+					<span style="padding:3%"><a href="#forgotpwd">Forgot Password</a></span>
+					<input type="image" class= "login-btn" src="images/icons/unnamed.jpg" alt="Submit">
+  					</form>
+					</div>
+				</div>
+<div id="main_div" style="margin-top:100px;">
+
+<div id="outer_span">
+	<span id="left_content">
+		<table id="box_table"  style="padding-left:80px;">
+			<tr>
+				<td id="content_1"><a href="#1">link_1</a></td>
+				<td id="content_2"><a href="#2">link_2</a></td>
+			</tr>
+			<tr>
+				<td id="content_3"><a href="#3">link_3</a></td>
+				<td id="content_4"><a href="#4">link_4</a></td>
+			</tr>
+			<tr>
+				<td id="content_5"><a href="#5">link_5</a></td>
+				<td id="content_6"><a href="#6">link_6</a></td>
+			</tr>
+		</table>
+	</span>
+	<span id="right_content" >
+		<h1>Welcome...</h1>
+
+<h3>Lorem ipsum dolor sit amet Riopsh</h3>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec nisl odio. Mauris vehicula at nunc id posuere. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec nisl odio. Mauris vehicula at nunc id posuere. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
+<br><br><br>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec nisl odio. Mauris vehicula at nunc id posuere. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
+<br><br><br><br><br><br><br><br><br><br><br><br><br>&copy All rights reserved.
+	</span>
+</div>	
+
+</div>			
+
+</body>
+
+</html>
