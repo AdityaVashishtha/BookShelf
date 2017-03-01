@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+* {
+	font-family: 'Raleway', sans-serif;	
+}
+body {
+	padding: 0px;
+	margin: 0px;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;	
+}
+a:visited {
+	color: black;
+}
+.main-menu {	
+	padding: 15px;
+	height: 50px;	
+	background: #00A5E2;	
+	border-bottom: 2px solid #08C;
+}
+.menu-logo {
+	width: 130px;
+	height: 35px;	
+	position: absolute;	
+	left: 10px;
+	background: url("../images/icon/BookShelfLogo.png") -3px 0px;
+	background-size: 150px 40px; 
+}
+.search-div {
+	background: #fff;
+	border: 1px solid #eee;	
+	box-shadow: 2px 2px 3px 3px rgba(0,0,0,0.1);
+	width: 600px;
+	height: 35px;	
+	padding: 5px;
+	position: absolute;	
+	left: 165px;		
+}
+@keyframes search_bar_mov {
+	75% {		
+		left: 165px;	
+		top: 15px;
+	}
+	from {
+		left: 250px;
+		top: 250px;
+	}
+}
+
+.search-div > .search-input {
+	width: 550px;
+	height: 28px;
+	border: 0px;
+	font-size: 1.1em;
+	padding-left: 2px;	
+}
+.search-div > input[type=submit] {
+	background: url("../images/icon/search.png");
+	background-size: 35px 35px;
+	border: 0px;
+	height: 35px;
+	width: 35px;
+	position: absolute;
+	right: 10px;		
+}
+.main-menu > .menu-button {
+	width: 50px;
+	height: 50px;
+	background: url("../images/icon/menu.png") no-repeat 5px 5px;
+	background-size: 35px 35px;		
+	position: absolute;
+	right: 10px;
+}
+.main-menu > .float-menu {
+	background: #fff;
+	background: url("../images/icon/books.png") #fff no-repeat 180px 200px;
+	background-size: 75px 75px;
+	box-shadow: 4px 2px 10px 12px rgba(0,0,0,0.1);
+	width: 250px;
+	position: absolute;
+	top: 80px;
+	right: 10px;
+	z-index: 1;
+	max-height: 500px;
+	display: none;
+}
+.main-menu > .float-menu::after {
+	content: "";
+	border: 10px solid transparent;
+	border-bottom-color: #fff;
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	top: -20px;
+	right: 20px;	
+}
+.main-menu > .float-menu > ul > li {
+	width: 60px;
+	height: 70px;	
+	float: left;
+	padding: 5px;	
+	margin: 5px;
+	background: #fff;
+	border: 2px solid transparent;
+}
+.main-menu > .float-menu > ul > li:hover {
+	border: 2px solid #ddd;	
+}
+
+.main-menu > .float-menu > ul > li > a {
+	color: #555;
+}
+
+.main-menu > .float-menu > ul > li > a > span {	
+	display: block;
+	font-size: 0.55em; 			
+	text-align: center;
+}
+
+.menu-image-button {
+	margin-left: 8px;	
+	max-width: 50px;	
+}
+
+.main-search-div {
+	left: 20%;
+	top: 250px;
+}
+
+.main-search-div::before {
+	content: "";
+	width: 180px;
+	height: 180px;	
+	position: absolute;
+	top: -200px;	
+	background: url("../images/icon/bookshelf.png") 0px 45px no-repeat;
+	background-size: 180px 180px;	
+}
+.main-body {
+	width: 100%;	
+	min-height: 550px;		
+}
+.result-div {
+	width: 650px;	
+	padding-left: 165px;
+	display: none;
+}
+.result-line {
+	position: relative;	
+}
+.result-line > h2 {
+	font-size: 0.85em;
+	padding-left: 5px;
+	color: #1E5B99;
+}
+.result-line > h2 > a {
+	color: #1E5B99;	
+}
+.result-line > .content {
+	position: relative;
+}
+.result-line > .content > img {	
+	width: 80px;
+	max-height: 80px;
+	position: relative;
+	float: left;	
+}
+.result-line > .content > .book-detail {
+	position: relative;	
+}
+.result-line > .content > .book-detail > .tags-details {	
+	color: #585858;
+	padding-left: 10px;
+	padding-top: 5px;
+	font-size: 0.80em;	
+}
+.result-line > .content > .book-detail > .stream {	
+	padding-left: 10px;
+	padding-top: 5px;
+	font-size: 0.80em;	
+	color: #1e995c;
+	font-weight: bold;
+}
+.result-line > .content > .book-detail > .availabillity {
+	padding-left: 10px;
+	padding-top: 5px;
+	font-size: 0.80em;	
+	color: #1e995c;
+	font-weight: bold;	
+	padding-bottom: 15px;
+	border-bottom: 1px solid #efefef;
+}
+.filter-div {
+	width: 250px;
+	height: 450px;
+	position: absolute;
+	right: 0px;
+	top: 90px;
+	border: 1px solid blue;
+	display: none;
+}
+
+/*		This Additional CSS is only for profile page 	*/
+.profile-detail {
+	box-sizing: border-box;
+	background: #fff;
+	width: 70%;
+	min-height: 550px;	
+	position: relative;
+	float: left;
+}
+.profile-detail > .personal-detail {		
+	position: relative;
+	float: left;	
+	box-sizing: border-box;	
+	width: 100%;	
+	min-width: 250px;	
+}
+.profile-detail > .personal-detail >.userId {	
+	box-sizing: border-box;		
+	width: 100%;
+	text-align: center;
+	font-size: 1.35em;
+	font-weight: bold;
+	color: #FE6600;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.profile-detail > .personal-detail > .profile-image > img {
+	width: 20%;	
+	border-bottom: 2px solid #efefef;
+	padding: 5px;
+	padding-bottom: 15px;
+	margin-top: 5px;
+	margin-left: 15px;
+	margin-bottom: 10px;
+	position: relative;
+	float: left;
+}
+.profile-detail > .personal-detail > .personal-profile {	
+	padding-top: 15px; 
+	position: relative;
+	float: left;
+	font-size: 0.75em;
+	padding-left: 15px;
+}
+.profile-detail > .personal-detail > .personal-profile > p {
+	margin: 5px;
+}
+.profile-detail > .personal-detail > .personal-profile > .name {
+	color: #1E5B99;
+	font-size: 1.25em;
+	font-weight: bold;
+}	
+.profile-detail > .personal-detail > .personal-profile > .stream {
+	color: #1E5B99;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.profile-detail > .current-issue {
+	box-sizing: border-box;	
+	position: relative;
+	float: left;
+	width: 100%;
+	min-height: 300px;
+}
+.profile-detail > .current-issue > .fine-detail {
+	position: relative;
+	float: left;			
+	box-sizing: border-box;
+	width: 25%;	
+	height: 300px;	
+	font-size: 1.5em;
+	padding-left: 5px;	
+	padding-top: 45px;
+	padding-bottom: 35px;	
+	text-align: center;
+	font-weight: bold;
+	color: #1E5B99;
+}
+.profile-detail > .current-issue > .fine-detail > p{
+	margin: 0px;
+}
+.profile-detail > .current-issue > .fine-detail > p:nth-child(even) {
+	color: #000;
+}
+.profile-detail > .current-issue > .issued-book {
+	box-sizing: border-box;	
+	position: relative;
+	float: left;
+	width: 75%;
+	min-height: 300px;
+}
+.profile-detail > .current-issue > .issued-book > .title {
+	color: #1E5B99;
+	font-weight: bolder;
+	text-align: center;
+	border-bottom: 1px solid #efefef; 
+	margin-bottom: 5px;
+}
+.profile-detail > .current-issue > .issued-book > .book-item {
+	box-sizing: border-box;
+	width: 150px;
+	padding: 5px;
+	position: relative;
+	float: left;	
+	text-align: center;
+	color: #1E5B99;
+	font-size: 0.75em;
+	border: 1px solid #efefef;
+}
+.profile-detail > .current-issue > .issued-book > .book-item > img{
+	width: 125px;	
+}
+.profile-detail > .current-issue > .issued-book > .book-item > div:nth-child(odd) {
+	font-weight: bold;	
+}
+.profile-detail > .current-issue > .issued-book > .book-item > div:nth-child(even) {
+	color: #000;	
+	font-weight: 0.65em;
+}
+.profile-detail > .current-issue > .issued-book > .book-item > .book-title {
+	color: black;
+	font-weight: bold;	
+	margin: 0px;
+}
+.side-detail {
+	border-left: 1px solid #efefef;
+	box-sizing: border-box;
+	position: relative;
+	float: left;
+	width: 30%;	
+	min-height: 550px;
+}
+.side-detail > .s-search {	
+	box-sizing: border-box;
+	width: 100%;
+	height: 200px;
+	font-size: 0.85em;
+	color: #1E5B99;
+	font-weight: bold;	
+	border-bottom: 1px solid #efefef;
+}
+.side-detail > .s-search > .title {
+	text-align: center;
+	padding-top: 10px;
+}
+.side-detail > .s-search > input[type=text] {
+	width: 80%;
+	height: 30px;
+	border: 1px solid #efefef;
+	border-bottom: 2px solid #1E5B99;
+	font-weight: bold;
+	font-size: 1.2em;
+	padding-left: 10px;
+	margin: 5%;
+	margin-left: 10%;	
+}
+.side-detail > .s-search > input[type=submit] { 
+	width: 120px;
+	height: 40px;
+	background: url("../images/icon/loupe.png") #fff no-repeat 5px ;
+	background-size: 30px 30px;
+	border: 2px solid #efefef;	
+	font-weight: bold;
+	font-size: 1.2em;
+	color: #1E5B99;				
+	margin-left: 10%;	
+}
+.side-detail > .s-search > input[type=submit]:hover { 
+	border: 2px solid #1E5B99;
+	color: transparent;
+	background: url("../images/icon/loupe.png") #fff no-repeat 45px ;
+	background-size: 30px 30px;	
+	animation: searchmov .25s 1;
+}
+@keyframes searchmov {
+	to {
+			border: 2px solid #1E5B99;
+			color: transparent;
+			background: url("../images/icon/loupe.png") #fff no-repeat 45px ;
+			background-size: 30px 30px;	
+	}
+	from {
+			background: url("../images/icon/loupe.png") #fff no-repeat 1px ;
+			background-size: 30px 30px;
+			border: 2px solid #efefef;
+			color: #1E5B99;
+	}
+}
+/*		This Additional CSS is only for Profile Page 	*/
+
+
+
+footer {
+	background: #ededed;
+	width: 100%;
+	height: 40px;
+	position: relative;
+	float: left;
+	padding-top: 10px;
+}
+.footer-note {	
+	font-size: .65em;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
+
+
+/*	This is Second Mode 	*/
+@media screen and (max-width: 900px) and (min-width: 400px) {
+	.menu-logo {
+		width: 50px;
+		height: 50px;		
+		left: 10px;
+		top: 20px;
+		background: url("../images/icon/bookshelf1.png") no-repeat 5px;
+		background-size: 45px 45px; 
+		border-radius: 50%;		
+	}
+	.search-div {
+		width: 60%;	
+		padding: 5px;
+		position: absolute;	
+		left: 80px;
+	}
+	.search-div > .search-input {
+		width: 80%;
+		height: 28px;
+		border: 0px;
+		font-size: 1.1em;
+		padding-left: 2px;	
+	}
+	.result-div {
+		width: 90%;
+		padding-left: 5%;
+	}
+
+/*		This Additional CSS is only for Profile Page 	*/
+	.profile-detail {		
+		background: #fff;
+		width: 100%;
+		min-height: 550px;	
+	}
+	.side-detail {
+		width: 100%;		
+	}
+	.profile-detail > .current-issue > .fine-detail {
+		width: 40%;
+	}
+	.profile-detail > .current-issue > .issued-book {
+		width: 60%;
+	}
+	.profile-detail > .current-issue > .issued-book > .book-item {
+		width: 45%;
+		margin: 2.5%;		
+	}
+/*		This Additional CSS is only for Profile Page 	*/
+
+}
+
+/*This is Third Mode*/
+
+@media screen and (max-width: 400px){	
+	.menu-logo {
+		width: 35px;
+		height: 35px;		
+		left: 10px;
+		top: 20px;
+		background: url("../images/icon/open-book.png") no-repeat 5px;
+		background-size: 25px 25px; 
+		border-radius: 50%;		
+	}
+	.search-div {
+		width: 60%;	
+		padding: 5px;
+		position: absolute;	
+		left: 55px;
+	}
+	.search-div > .search-input {
+		width: 80%;
+		height: 28px;
+		border: 0px;
+		font-size: 1.1em;
+		padding-left: 2px;	
+	}
+
+	.main-search-div {
+		left: 3%;
+		top: 250px;
+		width: 90%;
+	}
+	.main-menu > .menu-button {
+		right: 0px;
+	}
+	.result-div {
+		width: 90%;
+		padding-left: 5%;
+		font-size: 0.85em;
+	}
+
+/*		This Additional CSS is only for Profile Page 	*/
+	.profile-detail {	
+		background: #fff;
+		width: 100%;
+		min-height: 550px;	
+	}	
+	.profile-detail > .personal-detail > .profile-image > img {		
+		margin-left: 25%;
+		width: 50%;
+	}	
+	.side-detail {
+		width: 100%;		
+	}
+	.profile-detail > .current-issue > .fine-detail {
+		width: 100%;
+	}
+	.profile-detail > .current-issue > .issued-book {
+		width: 100%;
+	}
+	.profile-detail > .current-issue > .issued-book > .book-item {
+		width: 45%;
+		margin: 2.5%;		
+	}
+/*		This Additional CSS is only for Profile Page 	*/
+}

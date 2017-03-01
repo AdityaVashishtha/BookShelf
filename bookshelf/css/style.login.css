@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+* {
+	font-family: 'Raleway', sans-serif;	
+}
+body {
+	margin: 0px;
+	background: #C3DDEF;
+}
+a {
+	text-decoration: none;
+	color: #567;
+}
+.main-body {
+	box-sizing: border-box;
+	width: 100%;		
+}
+.input-box {
+	box-sizing: border-box;
+	position: relative;
+	float: left;
+	background: #f8f8f8;
+	min-height: 500px;
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 60px;
+	box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.05);
+	transition: box-shadow 0.3s;
+	margin-bottom: 20px;	
+}
+.input-box:hover { 
+	box-shadow: 0px 0px 20px 15px rgba(0,0,0,0.051);	
+}
+.box-title {
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 0.90em;
+	height: 60px;	
+	background: #56A0D3;
+}
+
+.box-title > h2 { 
+	color: #fff;
+	padding: 15px;
+	margin: 0px;	
+}
+
+.input-form {
+	position: relative;
+	float: left;
+	box-sizing: border-box;	
+	background: #efefef;
+	width: 60%;
+	min-height: 450px;
+}
+.input-field {	
+	box-sizing: border-box;	
+	z-index: 10;	
+	position: relative;
+	height: 85px;
+	padding: 5px;	
+	margin: 10px;
+}
+.input-field > .input {	
+	box-sizing: border-box;	
+	width: 100%;	
+	font-size: 1.30em;
+	background: #FFF;	
+	padding: 5px;
+	padding-left: 15px;
+	height: 60px;	
+	border:0px;
+	font-weight: bolder;
+	color: #3BE;		
+	transition: box-shadow 0.3s;
+}
+.input-field > input:focus {
+	box-shadow: 0px 0px 0px 2px #3BF;
+}
+.input-field > .input-label {
+	display: block;
+	position: relative;	
+	font-weight: bold;
+	color: #08C;	
+	bottom: -5px;
+}
+.input-field > .input-label::after {
+	content: '';
+	position: absolute;
+	top: -60px;
+	left: 5%;
+	z-index: -1;	
+	width: 90%;
+	height: 45px;
+}
+.input:focus + .input-label::after {
+	animation: anim-shadow 0.3s forwards;
+}
+.input-submit {
+	width: 150px;
+	height: 45px;
+	border: 0px;
+	margin: 15px;
+	margin-left: 20px;
+	font-weight: bold;	
+	background: #fff;
+	color: #08C;
+	font-size: 1em;
+	box-shadow: 0px 0px 0px 2px;	
+}
+form > a {
+	font-size: 0.85em;
+}
+.input-suggestion {
+	position: relative;
+	float: left;
+	box-sizing: border-box;
+	background: #f8f8f8;
+	width: 40%;
+	height: 100%;
+}
+.input-suggestion > .tip {
+	text-align: center;
+	padding-top: 15px;
+	height: 35px;
+	font-weight: bold;
+	color: #56A0D3;
+}
+.input-suggestion > .content {
+	padding: 15px;		
+	color: #789;
+}
+
+
+
+/*	This is Second Mode 	*/
+
+@media screen and (max-width: 900px) and (min-width: 400px) {	
+	.input-box {
+		width: 80%;
+		margin: 10%;
+	}
+	.input-form {
+		width: 100%;
+	}
+	.input-suggestion {
+		display: none;
+	}
+}
+
+
+/*This is Third Mode*/
+
+@media screen and (max-width: 400px){
+	body {
+		background: #67C;
+	}
+	.input-box {
+		width: 100%;
+		margin: 0px;		
+	}
+	.input-form {
+		width: 100%;
+	}
+	.input-suggestion {
+		display: none;
+	}
+}
+
+
+/************** This section is for animations ********************/
+@keyframes anim-shadow {
+	to {
+		box-shadow: 0px 0px 80px 40px rgba(0,0,0,0.5);
+		opacity: 0;
+	}
+}
