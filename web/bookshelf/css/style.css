@@ -212,6 +212,13 @@ a:visited {
 	position: relative;
 	float: left;
 }
+.profile-detail > div.welcome-note {
+    font-size: 1.2em;
+    border-bottom: 2px solid blue;
+    padding-bottom: 1em; 
+    text-align: center;
+    padding-top: 1em;
+}
 .profile-detail > .personal-detail {		
 	position: relative;
 	float: left;	

@@ -65,6 +65,26 @@ function checkEveryThing() {
 	}
 }
 
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    var items = location.search.substr(1).split("&");
+    for (var index = 0; index < items.length; index++) {
+        tmp = items[index].split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    }
+    return result;
+}
+
+
+function checkURL() {
+    s = findGetParameter("error");
+    if(s.length > 0) {
+        var o = document.querySelectorAll(".content ")[0];
+        o.innerHTML = "<div class='error-bar'>Invalid User name or Password</div>";
+    }
+}
+
 var submitButton = document.querySelectorAll("input[name=submit]")[0];
 submitButton.disabled =true;
 submitButton.style.cursor = "not-allowed";
@@ -75,3 +95,5 @@ menuButton.addEventListener('keyup',checkUserId,false);
 
 menuButton = document.querySelectorAll("input[name=password]")[0];
 menuButton.addEventListener('keyup',passwordCheck,false);
+
+checkURL()

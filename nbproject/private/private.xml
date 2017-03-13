@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/aditya/NetBeansProjects/BookShelf/web/index.html</file>
-            <file>file:/home/aditya/NetBeansProjects/BookShelf/web/bookshelf/register.html</file>
-            <file>file:/home/aditya/NetBeansProjects/BookShelf/src/java/Register/Register.java</file>
-            <file>file:/home/aditya/NetBeansProjects/BookShelf/web/bookshelf/css/style.login.css</file>
+            <file>file:/home/aditya/PJT/BookShelf/src/java/Register/Register.java</file>
+            <file>file:/home/aditya/PJT/BookShelf/web/bookshelf/css/style.css</file>
+            <file>file:/home/aditya/PJT/BookShelf/web/bookshelf/login.html</file>
+            <file>file:/home/aditya/PJT/BookShelf/src/java/com/bookshelf/functions/Login.java</file>
+            <file>file:/home/aditya/PJT/BookShelf/web/bookshelf/index.jsp</file>
+            <file>file:/home/aditya/PJT/BookShelf/src/java/com/bookshelf/data/Users.java</file>
         </group>
     </open-files>
 </project-private>
