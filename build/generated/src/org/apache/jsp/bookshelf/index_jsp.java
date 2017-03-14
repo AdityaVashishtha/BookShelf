@@ -49,11 +49,15 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
   Users user=null;
-    if( !LoginCheck.checkLogin(request) ) {
-            response.sendRedirect("login.html");
+    if( !LoginCheck.checkLogin(request) ) {        
+            response.sendRedirect("login.jsp");
     } 
     else {
         user = (Users) session.getAttribute("user");        
+        String type = user.getUser_type();
+        if(!type.equals("admin")) {
+            response.sendRedirect("home.jsp");
+        }
     }
 
       out.write("\n");
@@ -62,9 +66,12 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("<head>\n");
       out.write("    <title>Profile, Your request, dues, books here !!</title>\n");
-      out.write("\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
-      out.write("    <link rel=\"shortcut icon\" type=\"image/png\" href=\"images/icon/open-book.png\" />\n");
-      out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.css\">        \n");
+      out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">    \n");
+      out.write("    <link type=\"text/css\" href=\"./css/bootstrap.min.css\" rel=\"stylesheet\">    \n");
+      out.write("    \n");
+      out.write("    <link rel=\"shortcut icon\" type=\"image/png\" href=\"images/icon/open-book.png\" />    \n");
+      out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.login.css\">        \n");
+      out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.css\">             \n");
       out.write("</head>\n");
       out.write("<body>\n");
       out.write("\t<div class=\"main-menu\">\n");
@@ -73,12 +80,28 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<input class=\"search-input\" type=\"text\" name=\"search\">\n");
       out.write("\t\t\t<input type=\"submit\" name=\"searchSubmit\" value=\"\">\n");
       out.write("\t\t</div>\n");
-      out.write("                \n");
+      out.write("                <div class=\"welcome-note  visible-lg-block visible-md-block\">Welcome, \n");
+      out.write("                        ");
+
+                            try {
+                                   out.println(user.getName());
+                                } catch (Exception e) {
+                                   out.println(e);
+                                }                                            
+                        
+      out.write("\n");
+      out.write("                </div>\n");
       out.write("\t\t<div class=\"menu-button\">\n");
       out.write("\t\t\t\n");
       out.write("\t\t</div>\n");
       out.write("\t\t<div class=\"float-menu\">\n");
       out.write("\t\t\t<ul>\n");
+      out.write("                                <li>\n");
+      out.write("\t\t\t\t\t<a href=\"#/register\" id=\"register\">\n");
+      out.write("\t\t\t\t\t\t<img class=\"menu-image-button\" src=\"images/icon/student.png\" alt=\"menu-logo\" >\n");
+      out.write("\t\t\t\t\t\t<span>Register User</span>\n");
+      out.write("\t\t\t\t\t</a>\n");
+      out.write("\t\t\t\t</li>\n");
       out.write("\t\t\t\t<li>\n");
       out.write("\t\t\t\t\t<a href=\"\">\n");
       out.write("\t\t\t\t\t\t<img class=\"menu-image-button\" src=\"images/icon/notebook.png\" alt=\"menu-logo\" >\n");
@@ -118,67 +141,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t</ul>\n");
       out.write("\t\t</div>\n");
       out.write("\t</div>\t\t\n");
-      out.write("\t<div class=\"main-body\">\n");
-      out.write("\t\t\n");
-      out.write("\t\t<div class=\"profile-detail\">\n");
-      out.write("                    <div class=\"welcome-note\">Welcome, admin</div>\n");
-      out.write("\t\t\t<div class=\"personal-detail\">\n");
-      out.write("\t\t\t\t<div class=\"userId\">14BB520141</div>\n");
-      out.write("\t\t\t\t<div class=\"profile-image\">\n");
-      out.write("\t\t\t\t\t<img src=\"images/icon/man.png\" alt=\"profile-image\" />\n");
-      out.write("\t\t\t\t</div>\n");
-      out.write("\t\t\t\t<div class=\"personal-profile\">\n");
-      out.write("                                    <p class=\"name\">\n");
-      out.write("                                        ");
-
-                                            try {
-                                                    out.println(user.getName());
-                                                } catch (Exception e) {
-                                                    out.println(e);
-                                                }                                            
-                                        
-      out.write("\n");
-      out.write("                                    </p>\n");
-      out.write("\t\t\t\t\t<p class=\"stream\">0801CS141005</p>\n");
-      out.write("\t\t\t\t\t<p class=\"stream\">BE (Computer Engineering)</p>\n");
-      out.write("\t\t\t\t\t<p class=\"mobile\">41/B Block - M Sector C, New Place, New City, 10015</p>\n");
-      out.write("\t\t\t\t\t<p class=\"email\">+91-4440-520140</p>\n");
-      out.write("\t\t\t\t\t<p class=\"address\">JDNO@gmail.com</p>\t\t\t\t\t\n");
-      out.write("\t\t\t\t</div>\n");
-      out.write("\t\t\t</div>\n");
-      out.write("\t\t\t<div class=\"current-issue\">\n");
-      out.write("\t\t\t\t<div class=\"fine-detail\">\n");
-      out.write("\t\t\t\t\t<p>Total Fine</p>\n");
-      out.write("\t\t\t\t\t<p>4.00</p>\n");
-      out.write("\t\t\t\t\t<p>Book Allow</p>\n");
-      out.write("\t\t\t\t\t<p>2/3</p>\n");
-      out.write("\t\t\t\t\t<p>Issued</p>\n");
-      out.write("\t\t\t\t\t<p>3</p>\n");
-      out.write("\t\t\t\t</div>\n");
-      out.write("\t\t\t\t<div class=\"issued-book\">\n");
-      out.write("\t\t\t\t<div class=\"title\">Issued Book details:</div>\n");
-      out.write("\t\t\t\t\t<div class=\"book-item\">\n");
-      out.write("\t\t\t\t\t\t<img src=\"images/icon/agenda.png\" alt=\"Book Desc\" />\n");
-      out.write("\t\t\t\t\t\t<p class=\"book-title\">Book 1</p>\n");
-      out.write("\t\t\t\t\t\t<div>Issued On</div>\n");
-      out.write("\t\t\t\t\t\t<div>17 Feb 2016 04:54 PM</div>\n");
-      out.write("\t\t\t\t\t\t<div>Issued Till</div>\n");
-      out.write("\t\t\t\t\t\t<div>16 Mar 2016 04:54 PM</div>\n");
-      out.write("\t\t\t\t\t\t<div>Extended Days</div>\n");
-      out.write("\t\t\t\t\t\t<div>7</div>\n");
-      out.write("\t\t\t\t\t</div>\t\t\t\t\t\n");
-      out.write("\t\t\t\t\t<div class=\"book-item\">\n");
-      out.write("\t\t\t\t\t\t<img src=\"images/icon/agenda(1).png\" alt=\"Book Desc\" />\n");
-      out.write("\t\t\t\t\t\t<p class=\"book-title\">Book 2</p>\n");
-      out.write("\t\t\t\t\t\t<div>Issued On</div>\n");
-      out.write("\t\t\t\t\t\t<div>17 Feb 2016 04:54 PM</div>\n");
-      out.write("\t\t\t\t\t\t<div>Issued Till</div>\n");
-      out.write("\t\t\t\t\t\t<div>16 Mar 2016 04:54 PM</div>\n");
-      out.write("\t\t\t\t\t\t<div>Extended Days</div>\n");
-      out.write("\t\t\t\t\t\t<div>7</div>\n");
-      out.write("\t\t\t\t\t</div>\n");
-      out.write("\t\t\t\t</div>\n");
-      out.write("\t\t\t</div>\n");
+      out.write("\t<div class=\"main-body\">\t\t\n");
+      out.write("\t\t<div class=\"profile-detail\">                    \n");
+      out.write("                    <div class=\"loader-gif\"></div>                   \n");
       out.write("\t\t</div>\n");
       out.write("\t\t<div class=\"side-detail\">\n");
       out.write("\t\t\t<div class=\"s-search\">\n");
@@ -194,7 +159,17 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\tProject Created by Aditya Vashishtha, Abhishek Verma, and Vivek Brahmne\n");
       out.write("\t\t</div>\n");
       out.write("\t</footer>\n");
-      out.write("\t<script type=\"text/javascript\" src=\"js/index.js\"></script>\n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->\n");
+      out.write("        <script src=\"js/jquery-2.2.4.min.js\"></script>\n");
+      out.write("        <!-- Include all compiled plugins (below), or include individual files as needed -->\n");
+      out.write("        <script src=\"js/bootstrap.min.js\"></script>\n");
+      out.write("        \n");
+      out.write("        <script src=\"js/path.min.js\"></script>        \n");
+      out.write("        <script type=\"text/javascript\" src=\"js/ajaxRelated.js\"></script>        \n");
+      out.write("\t<script type=\"text/javascript\" src=\"js/index.js\"></script>        \n");
+      out.write("        <script type=\"text/javascript\" src=\"js/validate.js\"></script>        \n");
       out.write("</body>\n");
       out.write("</html>");
     } catch (Throwable t) {

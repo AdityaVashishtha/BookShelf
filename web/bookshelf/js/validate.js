@@ -66,8 +66,8 @@ function checkEveryThing() {
 }
 
 function findGetParameter(parameterName) {
-    var result = null,
-        tmp = [];
+    var result = "";
+    tmp = [];
     var items = location.search.substr(1).split("&");
     for (var index = 0; index < items.length; index++) {
         tmp = items[index].split("=");
@@ -78,7 +78,7 @@ function findGetParameter(parameterName) {
 
 
 function checkURL() {
-    s = findGetParameter("error");
+    s = findGetParameter("error");    
     if(s.length > 0) {
         var o = document.querySelectorAll(".content ")[0];
         o.innerHTML = "<div class='error-bar'>Invalid User name or Password</div>";
@@ -96,4 +96,4 @@ menuButton.addEventListener('keyup',checkUserId,false);
 menuButton = document.querySelectorAll("input[name=password]")[0];
 menuButton.addEventListener('keyup',passwordCheck,false);
 
-checkURL()
+checkURL();

@@ -8,11 +8,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%  Users user=null;
-    if( !LoginCheck.checkLogin(request) ) {
+    if( !LoginCheck.checkLogin(request) ) {        
             response.sendRedirect("login.jsp");
     } 
     else {
         user = (Users) session.getAttribute("user");        
+        String type = user.getUser_type();
+        if(!type.equals("admin")) {
+            response.sendRedirect("home.jsp");
+        }
     }
 %>
 
@@ -20,9 +24,12 @@
 <html>
 <head>
     <title>Profile, Your request, dues, books here !!</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="images/icon/open-book.png" />
-    <link rel="stylesheet" type="text/css" href="./css/style.css">        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link type="text/css" href="./css/bootstrap.min.css" rel="stylesheet">    
+    
+    <link rel="shortcut icon" type="image/png" href="images/icon/open-book.png" />    
+    <link rel="stylesheet" type="text/css" href="./css/style.login.css">        
+    <link rel="stylesheet" type="text/css" href="./css/style.css">             
 </head>
 <body>
 	<div class="main-menu">
@@ -31,12 +38,26 @@
 			<input class="search-input" type="text" name="search">
 			<input type="submit" name="searchSubmit" value="">
 		</div>
-                
+                <div class="welcome-note  visible-lg-block visible-md-block">Welcome, 
+                        <%
+                            try {
+                                   out.println(user.getName());
+                                } catch (Exception e) {
+                                   out.println(e);
+                                }                                            
+                        %>
+                </div>
 		<div class="menu-button">
 			
 		</div>
 		<div class="float-menu">
 			<ul>
+                                <li>
+					<a href="#/register" id="register">
+						<img class="menu-image-button" src="images/icon/student.png" alt="menu-logo" >
+						<span>Register User</span>
+					</a>
+				</li>
 				<li>
 					<a href="">
 						<img class="menu-image-button" src="images/icon/notebook.png" alt="menu-logo" >
@@ -76,65 +97,9 @@
 			</ul>
 		</div>
 	</div>		
-	<div class="main-body">
-		
-		<div class="profile-detail">
-                    <div class="welcome-note">Welcome, admin</div>
-			<div class="personal-detail">
-				<div class="userId">14BB520141</div>
-				<div class="profile-image">
-					<img src="images/icon/man.png" alt="profile-image" />
-				</div>
-				<div class="personal-profile">
-                                    <p class="name">
-                                        <%
-                                            try {
-                                                   out.println(user.getName());
-                                                } catch (Exception e) {
-                                                   out.println(e);
-                                                }                                            
-                                        %>
-                                    </p>
-					<p class="stream">0801CS141005</p>
-					<p class="stream">BE (Computer Engineering)</p>
-					<p class="mobile">41/B Block - M Sector C, New Place, New City, 10015</p>
-					<p class="email">+91-4440-520140</p>
-					<p class="address">JDNO@gmail.com</p>					
-				</div>
-			</div>
-			<div class="current-issue">
-				<div class="fine-detail">
-					<p>Total Fine</p>
-					<p>4.00</p>
-					<p>Book Allow</p>
-					<p>2/3</p>
-					<p>Issued</p>
-					<p>3</p>
-				</div>
-				<div class="issued-book">
-				<div class="title">Issued Book details:</div>
-					<div class="book-item">
-						<img src="images/icon/agenda.png" alt="Book Desc" />
-						<p class="book-title">Book 1</p>
-						<div>Issued On</div>
-						<div>17 Feb 2016 04:54 PM</div>
-						<div>Issued Till</div>
-						<div>16 Mar 2016 04:54 PM</div>
-						<div>Extended Days</div>
-						<div>7</div>
-					</div>					
-					<div class="book-item">
-						<img src="images/icon/agenda(1).png" alt="Book Desc" />
-						<p class="book-title">Book 2</p>
-						<div>Issued On</div>
-						<div>17 Feb 2016 04:54 PM</div>
-						<div>Issued Till</div>
-						<div>16 Mar 2016 04:54 PM</div>
-						<div>Extended Days</div>
-						<div>7</div>
-					</div>
-				</div>
-			</div>
+	<div class="main-body">		
+		<div class="profile-detail">                    
+                    <div class="loader-gif"></div>                   
 		</div>
 		<div class="side-detail">
 			<div class="s-search">
@@ -150,6 +115,16 @@
 			Project Created by Aditya Vashishtha, Abhishek Verma, and Vivek Brahmne
 		</div>
 	</footer>
-	<script type="text/javascript" src="js/index.js"></script>
+                
+                
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        
+        <script src="js/path.min.js"></script>        
+        <script type="text/javascript" src="js/ajaxRelated.js"></script>        
+	<script type="text/javascript" src="js/index.js"></script>        
+        <script type="text/javascript" src="js/validate.js"></script>        
 </body>
 </html>

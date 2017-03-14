@@ -44,7 +44,7 @@ public class Logout extends HttpServlet {
             out.println("<h1>Loggin out user ....<h1>");
             HttpSession session = request.getSession();
             session.removeAttribute("user_id");
-            response.sendRedirect("bookshelf/login.html");
+            response.sendRedirect("bookshelf/login.jsp");
             out.println("</body>");
             out.println("</html>");
         }
