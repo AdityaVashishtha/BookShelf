@@ -30,12 +30,12 @@ a {
 	box-shadow: 0px 0px 20px 15px rgba(0,0,0,0.051);	
 }
 
-.register-box {
+.register-box , .book-upload-box{
     width: 90%;
     margin-left: 5%;
     margin-top: 50px;
 }
-.register-box:hover { 
+.register-box:hover ,.book-upload-box:hover { 
        box-shadow: 0px 0px 20px 15px rgba(0,0,0,0.051);
 }
 
@@ -61,6 +61,10 @@ a {
 	background: #FEFEFE;
 	width: 60%;
 	min-height: 450px;        
+}
+
+.book-upload-box > .input-form {
+    width: 40%;
 }
 .input-field {	
 	box-sizing: border-box;	
@@ -136,8 +140,23 @@ form > a {
 	font-weight: bold;
 	color: #56A0D3;
 }
+.book-upload-box > .input-suggestion > .content {
+    display: block;
+}
+
+.book-upload-box > .input-suggestion > .content > form > .input-field > .input{
+    font-size: 0.95em;
+    height: 40px;
+}
+.book-upload-box > .input-suggestion > .content > form > .input-field > textarea.input {
+    height: 80px;
+    resize: none;
+}
+.book-upload-box > .input-suggestion > .content > form > .input-field {
+     height: auto;
+}
 .input-suggestion > .content {
-	padding: 15px;		
+	padding-left: 15px;		
 	color: #789;
 }
 

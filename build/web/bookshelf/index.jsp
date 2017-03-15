@@ -59,9 +59,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="#/addBook" id="add_book">
 						<img class="menu-image-button" src="images/icon/notebook.png" alt="menu-logo" >
-						<span>Take Note</span>
+						<span>Add Book</span>
 					</a>
 				</li>
 				<li>
