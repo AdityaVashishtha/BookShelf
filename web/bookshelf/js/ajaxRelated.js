@@ -89,6 +89,30 @@ $(document).ready(function(){
             
         }});
     });
+    
+    
+    // This script for ajax based student search
+    $('.s-search').find('input[type=submit]').click(function () {        
+        searchString = $(this).parent().find("input[name=ssearch]").val();
+        isBookSearch = $(this).parent().find("input[name=booksearch]").is(":checked");        
+        if(searchString.length >5 && !isBookSearch ) {
+             $.post("ajaxStudentProfile.jsp", {query: searchString}, function(result){
+                $(".profile-detail").html(result);
+            });
+        } else if (searchString.length >5 && isBookSearch ) {            
+            $.post("ajaxBookInfo.jsp", {query: searchString}, function(result){
+                $(".book-details").html(result);
+            });
+        } else {
+            alert("Not a valid input.");
+        }
+    });
+    
+    $(document).on('click','.issue-book-btn',function () {
+        bookid = $('input[name=issue-book-id]').val();
+        userid = $('input[name=issue-book-id]').val();
+    });
+    
 
     
 });

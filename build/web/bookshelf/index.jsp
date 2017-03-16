@@ -104,9 +104,13 @@
 		<div class="side-detail">
 			<div class="s-search">
 				<div class="title">Student/Book Search</div>
-					<input type="text" name="ssearch" autocomplete="off">				
-					<input type="submit" name="loupe" value="Search" >
+                                <input type="text" name="ssearch" autocomplete="off">	                                
+                                <input type="submit" name="search-text" value="Search" >
+                                Book search :<input type="checkbox" name="booksearch" />
 			</div>
+                        <div class="book-details">
+                            
+                        </div>
 		</div>
 
 	</div>

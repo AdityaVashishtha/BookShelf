@@ -25,7 +25,7 @@
         <description>Location to store uploaded file</description> 
         <param-name>file-upload</param-name> 
         <param-value>
-             /home/aditya/PJT/BookShelf/upload/
+             /home/aditya/PJT/BookShelf/web/bookshelf/images/uploads/
          </param-value> 
     </context-param>
     
