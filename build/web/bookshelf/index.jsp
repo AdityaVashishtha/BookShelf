@@ -114,6 +114,9 @@
 		</div>
 
 	</div>
+                
+        <div id="snackbar"></div>
+                
 	<footer class="footer">
 		<div class="footer-note">
 			Project Created by Aditya Vashishtha, Abhishek Verma, and Vivek Brahmne

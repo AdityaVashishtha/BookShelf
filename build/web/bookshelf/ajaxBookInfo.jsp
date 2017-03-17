@@ -47,6 +47,16 @@
                     <li>ISBN: <%= isbn %></li>
                     <br>
                     <input type="hidden" name="issue-book-id" value="<%= bookid %>"/>
+                    <li>
+                        <select name="issue-book-for-time">
+                            <option value="30" >1 month</option>
+                            <option value="60" >2 month</option>
+                            <option value="90" >3 month</option>
+                            <option value="180" >6 month</option>
+                        </select>
+                    </li>                    
+                    <br>
+                    
                     <%
                         query = "select * from issued_book where book_id=?";
                         ps = connection.prepareStatement(query);

@@ -110,7 +110,17 @@ $(document).ready(function(){
     
     $(document).on('click','.issue-book-btn',function () {
         bookid = $('input[name=issue-book-id]').val();
-        userid = $('input[name=issue-book-id]').val();
+        userid = $('input[name=issue-user-id]').val();
+        time = $('select[name=issue-book-for-time]').val();
+        if (typeof userid === 'undefined') {
+            alert("First Search a user to issue book.");
+        } else {            
+            $.post("../IssueBook", {bookid: bookid, userid: userid, time: time}, function(result){
+                $('#snackbar').text(result);
+                $('#snackbar').addClass('show');
+                setTimeout(function(){$('#snackbar').removeClass('show');}, 3000);
+            });
+        }
     });
     
 

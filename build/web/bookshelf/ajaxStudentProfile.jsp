@@ -34,7 +34,7 @@
             
             <div class="personal-detail">
                 <div class="userId"> <%= uid %> </div>
-                <input type="hidden" name="issue-book-id" value="<%= uid %>"/>
+                <input type="hidden" name="issue-user-id" value="<%= uid %>"/>
                     <div class="profile-image">
                         <img class="thumbnail" src="<%= "../"+profile_img %>" alt="profile-image" />
                     </div>
