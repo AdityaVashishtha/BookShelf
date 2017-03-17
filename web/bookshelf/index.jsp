@@ -8,15 +8,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%  Users user=null;
-    if( !LoginCheck.checkLogin(request) ) {        
+    if( !LoginCheck.checkLogin(session) ) {        
             response.sendRedirect("login.jsp");
     } 
     else {
-        user = (Users) session.getAttribute("user");        
-        String type = user.getUser_type();
-        if(!type.equals("admin")) {
-            response.sendRedirect("home.jsp");
-        }
+        try {
+                user = (Users) session.getAttribute("user");        
+                String type = user.getUser_type();
+                if(!type.equals("admin")) {
+                    response.sendRedirect("home.jsp");
+                }
+            } catch (Exception e) {
+                out.print(e);                
+                out.print(session.getAttribute("user_name"));
+            }
     }
 %>
 

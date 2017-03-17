@@ -29,7 +29,7 @@
             String profile_img = rs.getString(12);
             String dept_name = rs.getString(13);
             profile_img = profile_img.replaceAll("/home/aditya/PJT/BookShelf/", "");
-            //out.print("<img src='../"+profile_img+"' />"+dept_name);
+            //out.print("<img src='../"+profile_img+"' />"+dept_name);                        
             %>
             
             <div class="personal-detail">
@@ -46,7 +46,7 @@
                             <p class="email"> <%= email %> </p>
                             <p class="address"> Admission Date : <%= date %> </p>					
                     </div>
-            </div>
+            </div>            
             <div class="current-issue">
                     <div class="fine-detail">
                             <p>Total Fine</p>
@@ -58,31 +58,39 @@
                     </div>
                     <div class="issued-book">
                     <div class="title">Issued Book details:</div>
+                        <%
+                            query = "select title,datediff(issue_date,due_date) as ex_day ,date_format(due_date,'%D %b %y %h:%m:%s %p') as due_date,thumbnail, date_format(issue_date,'%D %b %y %h:%m:%s %p') as issue_date from issued_book NATURAL JOIN book NATURAL JOIN book_info where user_id=?";
+                            ps = connection.prepareStatement(query);
+                            ps.setString(1, uid);
+                            rs = ps.executeQuery();                        
+                            while(rs.next()) {   
+                                String title = rs.getString("title");
+                                String issued_date = rs.getString("issue_date");
+                                String due_date = rs.getString("due_date");
+                                String thumbnail = rs.getString("thumbnail");
+                                int ex_day = rs.getInt("ex_day");
+                                ex_day = ex_day>0 ? ex_day : 0;
+                        %>
                             <div class="book-item">
-                                    <img src="images/icon/agenda.png" alt="Book Desc" />
-                                    <p class="book-title">Book 1</p>
+                                <img class="thumbnail" src="<%= thumbnail %>" alt="Book Desc" />
+                                <br>
+                                    <p class="book-title"><%= title %></p>
                                     <div>Issued On</div>
-                                    <div>17 Feb 2016 04:54 PM</div>
+                                    <div><%= issued_date %></div>
                                     <div>Issued Till</div>
-                                    <div>16 Mar 2016 04:54 PM</div>
+                                    <div><%= due_date %></div>
                                     <div>Extended Days</div>
-                                    <div>7</div>
-                            </div>					
-                            <div class="book-item">
-                                    <img src="images/icon/agenda(1).png" alt="Book Desc" />
-                                    <p class="book-title">Book 2</p>
-                                    <div>Issued On</div>
-                                    <div>17 Feb 2016 04:54 PM</div>
-                                    <div>Issued Till</div>
-                                    <div>16 Mar 2016 04:54 PM</div>
-                                    <div>Extended Days</div>
-                                    <div>7</div>
-                            </div>
+                                    <div><%= ex_day %></div>
+                            </div>					                            
+                            <%
+                                }
+                            %>
                     </div>
             </div>
 
 
-<%
+<%              
+
         } else {
             out.print("<h1>No result found</h1>");
         }

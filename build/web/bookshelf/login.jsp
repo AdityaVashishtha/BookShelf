@@ -7,7 +7,7 @@
 <%@page import="com.bookshelf.utillity.LoginCheck"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
-    if( LoginCheck.checkLogin(request) ) {
+    if( LoginCheck.checkLogin(session) ) {
             response.sendRedirect("index.jsp");
     } 
 %>

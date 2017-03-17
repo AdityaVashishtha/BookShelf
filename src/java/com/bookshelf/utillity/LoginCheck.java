@@ -14,8 +14,7 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginCheck {
     
-    public static boolean checkLogin(HttpServletRequest request) {
-        HttpSession session = request.getSession();
+    public static boolean checkLogin(HttpSession session) {        
         String userId = (String) session.getAttribute("user_id");
         if(userId == null) {
             return false;

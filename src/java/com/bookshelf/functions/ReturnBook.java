@@ -5,28 +5,25 @@
  */
 package com.bookshelf.functions;
 
-import com.bookshelf.data.Users;
 import com.bookshelf.utillity.SQLConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.Timestamp;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author aditya
  */
-public class Login extends HttpServlet {
+@WebServlet(name = "ReturnBook", urlPatterns = {"/ReturnBook"})
+public class ReturnBook extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,47 +39,59 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+            String bookid = request.getParameter("bookid");
+            String query = "select *, datediff(now(),due_date)*? as fine from issued_book where book_id=?";
             Connection connection = SQLConnection.createConnection();
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");          
             try {
-                String uid = request.getParameter("userid");
-                String password = request.getParameter("password");
-                MessageDigest md5 = MessageDigest.getInstance("MD5");
-                md5.update(StandardCharsets.UTF_8.encode(password));
-                String hashedPass = String.format("%032x", new BigInteger(1, md5.digest())).toString();         
-                
-                String query = "select * from users where user_id = ? and password = ?";
-                
                 PreparedStatement ps = connection.prepareStatement(query);
-                ps.setString(1, uid);
-                ps.setString(2, hashedPass);
-                
+                int x = 1;//SQLConnection.BOOKFINE;
+                ps.setInt(1, x);
+                ps.setString(2, bookid);
                 ResultSet rs = ps.executeQuery();
                 if(rs.next()) {
-                 out.println("<h1>Servlet Login at " + rs.getString("name") + "</h1>");   
-                    HttpSession session =  request.getSession(Boolean.TRUE);
-                    session.setAttribute("user_id", uid);                    
-                    Users user = new Users(rs.getString("name"), rs.getString("user_id"), rs.getString("password"),rs.getString(3), rs.getString("user_type"));
-                    session.setAttribute("user_name",user.getName());
-                    session.setAttribute("user", user);                    
-                    response.sendRedirect("bookshelf/index.jsp");
+                    String userid = rs.getString(2);
+                    Timestamp issueDate = rs.getTimestamp(3);
+                    Timestamp dueDate = rs.getTimestamp(4);
+                    int fine = rs.getInt(5);
+                    if(fine < 0) {
+                        fine = 0;
+                    } 
+                    query = "INSERT INTO `receipt`(`book_id`, `user_id`, `submission_date`, `issue_date`, `due_date`, `fine`) VALUES (?,?,CURRENT_TIMESTAMP,?,?,?);";
+                    ps = connection.prepareStatement(query);
+                    ps.setString(1, bookid);
+                    ps.setString(2, userid);
+                    ps.setTimestamp(3, issueDate);
+                    ps.setTimestamp(4, dueDate);  
+                    ps.setInt(5, fine);
+                    x = ps.executeUpdate();
+                    if(x>0) {
+                        query = "DELETE FROM `issued_book` WHERE book_id=?";
+                        ps = connection.prepareStatement(query);
+                        ps.setString(1, bookid);
+                        x = ps.executeUpdate();
+                        if(x>0) {
+                            query = "update user_profile set issued_book = issued_book - 1 where user_id = ?";
+                            ps = connection.prepareStatement(query);
+                            ps.setString(1, userid);
+                            x = ps.executeUpdate();
+                            if(x>0) {
+                                out.print("Book Returned");
+                            } else {
+                                out.print("Book Returned but not updated.");
+                            }
+                        } else {
+                            out.print("Book receipt generated, Book record not deleted !!");
+                        }
+                    } else {
+                        out.print("Some error occured");
+                    }
+                    
                 } else {
-                    out.println("<script>alert('Invalid Username or password!!')</script>");
-                    response.sendRedirect("bookshelf/login.jsp?error=invalid_user_password");
-                }               
+                    out.print("Book not issued to anyone!");
+                }
             } catch (Exception e) {
-                out.println("<h1>This "+e+"</h1>");
-                //response.sendRedirect("bookshelf/login.html");
-            }                        
-            out.println("</body>");
-            out.println("</html>");
+            }
+                        
         }
     }
 

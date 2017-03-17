@@ -87,7 +87,15 @@ public class IssueBook extends HttpServlet {
                                         ps.setInt(3, time);
                                         int x = ps.executeUpdate();
                                         if(x >0) {
-                                            out.print("Book Issued");
+                                            query = "update user_profile set issued_book = issued_book + 1 where user_id = ?";
+                                            ps = connection.prepareStatement(query);
+                                            ps.setString(1, userid);
+                                            x = ps.executeUpdate();
+                                            if(x>0) {
+                                                out.print("Book Issued");
+                                            } else {
+                                                out.print("Book Issued but not updated.");
+                                            }                
                                         } else {
                                             out.print("Book not issued due to some error");
                                         }
