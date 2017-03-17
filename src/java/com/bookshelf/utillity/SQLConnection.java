@@ -13,6 +13,9 @@ import java.sql.DriverManager;
  * @author aditya
  */
 public class SQLConnection {
+    
+    public static final int BOOKFINE = 1;
+    
     public static Connection createConnection() {
         try{  
             Class.forName("com.mysql.jdbc.Driver");  

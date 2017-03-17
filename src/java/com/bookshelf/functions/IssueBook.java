@@ -64,7 +64,35 @@ public class IssueBook extends HttpServlet {
                             int quota = rs.getInt(1);
                             int issued_book = rs.getInt(2);
                             if(quota > issued_book){
-                                
+                                query = "SELECT isbn FROM book where book_id=?";
+                                ps = connection.prepareStatement(query);
+                                ps.setString(1, bookid);
+                                rs = ps.executeQuery();
+                                if(rs.next()) {
+                                    String isbn = rs.getString(1);
+                                    query = "select isbn from book natural join issued_book where isbn=? and user_id= ?";
+                                    ps = connection.prepareStatement(query);
+                                    ps.setString(1, isbn);
+                                    ps.setString(2, userid);
+                                    rs = ps.executeQuery();
+                                    if(rs.next()) {
+                                        out.print("User already has issued book with same ISBN");
+                                    } else {
+                                        query = "INSERT INTO `issued_book` "
+                                                + "(`book_id`, `user_id`, `issue_date`, `due_date`) "
+                                                + "VALUES (? , ? , now(), DATE_ADD(now(),INTERVAL ? DAY));";
+                                        ps = connection.prepareStatement(query);
+                                        ps.setString(1, bookid);
+                                        ps.setString(2, userid);
+                                        ps.setInt(3, time);
+                                        int x = ps.executeUpdate();
+                                        if(x >0) {
+                                            out.print("Book Issued");
+                                        } else {
+                                            out.print("Book not issued due to some error");
+                                        }
+                                    }
+                                }
                             } else {
                                 out.print("Books Limit reached ::"+quota+"/"+issued_book);
                             }
