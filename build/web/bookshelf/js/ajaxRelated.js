@@ -20,6 +20,16 @@ $(document).ready(function(){
         }});
     });
     
+
+//    this function to load student profile
+    function loadProfile(userId) {
+        $.post("ajaxStudentProfile.jsp", {query: userId}, function(result){
+                $(".profile-detail").html(result);
+        });
+    }
+//    this function to load student profile
+    
+    
 //    ISBN No. content fetch
     $(document).on('click','#fetch_book',function () {
         
@@ -118,6 +128,7 @@ $(document).ready(function(){
             $.post("../IssueBook", {bookid: bookid, userid: userid, time: time}, function(result){
                 $('#snackbar').text(result);
                 $('#snackbar').addClass('show');
+                loadProfile(userid);
                 setTimeout(function(){$('#snackbar').removeClass('show');}, 3000);
             });
         }
@@ -125,9 +136,9 @@ $(document).ready(function(){
     
     $(document).on('click','.return-book-btn',function () {
         bookid = $('input[name=issue-book-id]').val();
-        $.post("../ReturnBook", {bookid: bookid }, function(result){
-            $('#snackbar').text(result);
-            $('#snackbar').addClass('show');
+        $.post("../ReturnBook", {bookid: bookid }, function(result){                       
+            $('#snackbar').text(result);            
+            $('#snackbar').addClass('show');            
             setTimeout(function(){$('#snackbar').removeClass('show');}, 3000);
         });
     });

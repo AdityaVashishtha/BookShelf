@@ -19,8 +19,13 @@
 	<div class="main-menu">
 		<div class="menu-logo"></div>
 		<div class="main-search-div search-div" id="id1">
-			<input class="search-input" type="text" name="search">
-			<input type="submit" name="searchSubmit" value="">
+                    <input class="search-input" id="main-search-input" type="text" name="search" autocomplete="off">
+                    <input id="searchSubmit" type="submit" name="searchSubmit" value="">
+                    <div class="search-suggestion">
+                        <ul>
+                            
+                        </ul>
+                    </div>
 		</div>
 		<div class="menu-button">
 			
@@ -67,52 +72,7 @@
 		</div>
 	</div>		
 	<div class="main-body">
-		<div class="result-div">
-			<div class="result-line">
-				<h2>
-					<a href="">This is title of result which is tricky - Aditya AMD K</a>
-				</h2>
-				<div class="content">
-					<img src="images/icon/bookcase.png" alt="search result image" />
-					<div class="book-detail">
-						<div class="tags-details">#tag #tag this is idiot #tag #tag #tag this is idiot #tag#tag #tag this is idiot #tag#tag #tag this is idiot #tag</div>					
-						<div class="stream">Department of Physics</div>
-						<div class="availabillity">Available</div>						
-					</div>					
-				</div>	
-				<div class="bottom-seprate"></div>			
-			</div>
-
-			<div class="result-line">
-				<h2>
-					<a href="">This is title of result which is tricky - Aditya AMD K</a>
-				</h2>
-				<div class="content">
-					<img src="images/icon/bookcase.png" alt="search result image" />
-					<div class="book-detail">
-						<div class="tags-details">#tag #tag this is idiot #tag #tag #tag this is idiot #tag#tag #tag this is idiot #tag#tag #tag this is idiot #tag</div>					
-						<div class="stream">Department of Physics</div>
-						<div class="availabillity">Available</div>						
-					</div>					
-				</div>	
-				<div class="bottom-seprate"></div>			
-			</div>
-
-			<div class="result-line">
-				<h2>
-					<a href="">This is title of result which is tricky - Aditya AMD K</a>
-				</h2>
-				<div class="content">
-					<img src="images/icon/bookcase.png" alt="search result image" />
-					<div class="book-detail">
-						<div class="tags-details">#tag #tag this is idiot #tag #tag #tag this is idiot #tag#tag #tag this is idiot #tag#tag #tag this is idiot #tag</div>					
-						<div class="stream">Department of Physics</div>
-						<div class="availabillity">Available</div>						
-					</div>					
-				</div>	
-				<div class="bottom-seprate"></div>			
-			</div>
-			
+		<div class="result-div">						
 
 		</div>
 		<div class="filter-div">
@@ -124,6 +84,13 @@
 			Project Created by Aditya Vashishtha, Abhishek Verma, and Vivek Brahmne
 		</div>
 	</footer>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        
+        
 	<script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/ajaxIndexPage.js"></script>
 </body>
 </html>

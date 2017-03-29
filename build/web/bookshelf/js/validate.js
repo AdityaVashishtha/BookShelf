@@ -3,7 +3,7 @@ var isValidUserId=false;
 
 function checkUserId(argument) {
 	var label = this.parentElement.getElementsByTagName("label")[0];
-	if(this.value.length <8) {
+	if(this.value.length < 6) {
 		this.style.color="#D99";				
 		isValidUserId=false;
 	}
@@ -16,7 +16,7 @@ function passwordCheck(argument) {
 	var label = this.parentElement.getElementsByTagName("label")[0];
 	var password = this.value;
 	var isCorrect = /[a-z|1-9]*[@#$%][a-z|1-9]*/.test(password);
-	if(!isCorrect || password.length<8) {
+	if(!isCorrect || password.length < 6) {
 		this.style.color="#D99";
 		isValidPassword=false;
 	}

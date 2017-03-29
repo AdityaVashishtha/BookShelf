@@ -104,7 +104,27 @@
 	</div>		
 	<div class="main-body">		
 		<div class="profile-detail">                    
-                    <div class="loader-gif"></div>                   
+                    <div class="loader-gif"></div> 
+                    <div class="dashboard col-lg-12">                                                
+                        <div class="dashboard-upper-block orangeborder notification-box col-lg-4">
+                            <div class="dashboard-block-title myorange">Notification Area</div>
+                        </div>                        
+                        <div class="dashboard-upper-block col-lg-8">
+                            <div class="dashboard-block blueborder col-lg-5">
+                                <div class="dashboard-block-title myblue">Book Issued</div>
+                            </div>                        
+                            <div class="dashboard-block redborder col-lg-5">
+                                <div class="dashboard-block-title myred">Student Registered</div>
+                            </div>                        
+                            <div class="dashboard-block greenborder col-lg-5">
+                                <div class="dashboard-block-title mygreen">Books Returned</div>
+                            </div>                        
+                            <div class="dashboard-block yellowborder col-lg-5">
+                                <div class="dashboard-block-title myyellow">Fine Collected</div>
+                            </div>                                                    
+                        </div>                                                
+                    </div>
+                    
 		</div>
 		<div class="side-detail">
 			<div class="s-search">

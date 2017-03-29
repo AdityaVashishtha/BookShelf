@@ -164,18 +164,21 @@ a:visited {
 	position: relative;
 }
 .result-line > .content > img {	
-	width: 80px;
-	max-height: 80px;
+	width: 100px;
+	max-height: 120px;
+        margin: 10px;
 	position: relative;
 	float: left;	
 }
 .result-line > .content > .book-detail {
+        padding-left: 20px;
 	position: relative;	
 }
 .result-line > .content > .book-detail > .tags-details {	
 	color: #585858;
-	padding-left: 10px;
+	padding-left: 30px;
 	padding-top: 5px;
+        margin: 10px;
 	font-size: 0.80em;	
 }
 .result-line > .content > .book-detail > .stream {	
@@ -188,11 +191,16 @@ a:visited {
 .result-line > .content > .book-detail > .availabillity {
 	padding-left: 10px;
 	padding-top: 5px;
-	font-size: 0.80em;	
-	color: #1e995c;
+	font-size: 0.80em;		
 	font-weight: bold;	
-	padding-bottom: 15px;
+	padding-bottom: 15px;       
 	border-bottom: 1px solid #efefef;
+}
+.availabillity.true {
+    color: rgba(30,160,90,1);
+}
+.availabillity.false {
+    color: rgba(255,25,25,0.75);
 }
 .filter-div {
 	width: 250px;
@@ -209,7 +217,7 @@ a:visited {
 	box-sizing: border-box;
 	background: #f8f8f8;
 	width: 70%;
-	min-height: 800px;	
+	min-height: 1000px;
 	position: relative;
 	float: left;
 }
@@ -338,6 +346,7 @@ div.welcome-note {
 }
 .side-detail {
 	border-left: 1px solid #efefef;
+        border-top: 1px solid #efefef;
 	box-sizing: border-box;
 	position: relative;
 	float: left;
@@ -427,12 +436,60 @@ ul > .desc {
     text-align: justify;
     padding: 25px;
 }
+
+.danger {
+    background: rgba(255,25,25,0.45);
+    border: 1px solid rgba(255,25,25,0.50);
+    color: #FF4C4C;
+}
+.success {
+    background: rgba(25,255,25,0.45);
+    border: 1px solid rgba(25,255,25,0.50);
+    color: #FF4C4C;
+}
 .loader-gif {    
     width: 100%;
     min-height: 550px;    
     background: url("../images/icon/loading.gif") #FEFEFE no-repeat center;
     display: none;
 }
+
+/*search suggestion for home.jsp page*/
+.search-suggestion {    
+    position: absolute;
+    display: none;
+    box-sizing: border-box;
+    top: 44px;
+    left: 0px;    
+    background: #fff;    
+    z-index: 1;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.1);
+    border: 1px solid #eee;	    
+    width: 100%;             
+}
+.search-suggestion > ul {
+    box-sizing: border-box;    
+    padding:0px;
+}
+.search-suggestion > ul > li {    
+    background: #fff;
+    height: 30px;    
+    padding: 5px;        
+    padding-left: 20px;    
+}
+.search-suggestion > ul > li:hover {    
+    background: #eee;
+}
+.search-suggestion > ul > li > a, li > a:hover {    
+    color: #333;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*search suggestion for home.jsp page*/
+
 
 @keyframes searchmov {
 	to {
@@ -490,6 +547,88 @@ ul > .desc {
 }
 /*THIS IS FOR SNACKBAR*/
 
+/*FOR DASHBOARD PURPOSE*/
+.dashboard {    
+    position: relative;    
+    padding: 1em;
+    background: #f8f8f8;
+    border: 2px solid #00A5E2 ;
+    height: auto;
+    margin-top: 100px;
+}
+.dashboard-upper-block {    
+    position: relative;    
+    min-height: 500px;
+}
+.notification-box {
+    position: relative;
+    border: 1px solid gold;
+    padding: 0px;
+}
+.notification-box > .dashboard-block-title {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;    
+    height: 40px;
+    top: 0px;
+    text-align: center;
+    color: #FEFEFE;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding-top: 5px;
+}
+.dashboard-block {
+    box-sizing: border-box;    
+    height: 200px;    
+    margin-bottom: 1.5em;
+    margin: 1.5em;
+    padding: 0px;
+}
+.dashboard-block > .dashboard-block-title {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;    
+    height: 40px;
+    bottom: 0px;
+    text-align: center;
+    color: #FEFEFE;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding-top: 5px;
+}
+.blueborder {
+    border: 2px solid #00A5E2;
+}
+.redborder {
+    border: 2px solid #FF4C4C;
+}
+.greenborder {
+    border: 2px solid #1e995c;
+}
+.yellowborder {
+    border: 2px solid goldenrod;
+}
+.orangeborder {
+    border: 2px solid #FE6600;
+}
+.myblue {
+    background: #00A5E2;    
+}
+.myred {
+    background: #FF4C4C;
+}
+.mygreen {
+    background: #1e995c;
+}
+.myyellow {
+    background: goldenrod;
+}
+.myorange {
+    background: #FE6600;
+}
+
+
+/*FOR DASHBOARD PURPOSE*/
 footer {
 	background: #ededed;
 	width: 100%;
@@ -504,6 +643,7 @@ footer {
 	bottom: 5px;
 	right: 5px;
 }
+
 
 
 /*	This is Second Mode 	*/

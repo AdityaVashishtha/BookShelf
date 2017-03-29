@@ -219,7 +219,7 @@ public class Register extends HttpServlet {
                         out.println("Image not Inserted");
                     } else {
                         out.println("Image Inserted");
-                        query = "INSERT INTO `user_profile`(`user_id`, `name`, `email`, `mobile`, `admission_date`, `dept_id`, `quota`, `profile_img`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                        query = "INSERT INTO `user_profile`(`user_id`, `name`, `email`, `mobile`, `admission_date`, `dept_id`, `quota`, `issued_book` , `profile_img`) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
                         ps = connection.prepareStatement(query);
                         ps.setString(1, uid);
                         ps.setString(2, fname);
@@ -228,7 +228,8 @@ public class Register extends HttpServlet {
                         ps.setString(5, date);
                         ps.setString(6, dept);
                         ps.setInt(7, quota);
-                        ps.setString(8, filePath);
+                        ps.setInt(8, 0);
+                        ps.setString(9, filePath);
                         if(ps.execute()) {
                             out.println("User Details not Inserted");
                         } else {
