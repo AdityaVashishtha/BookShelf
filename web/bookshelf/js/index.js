@@ -56,3 +56,22 @@ menu.addEventListener('click',menuSafe,false);
 
 var body = document.getElementsByTagName("html")[0];
 body.addEventListener('click',menuClose,false);
+
+//var w;
+//
+//function startWorker() {
+//    if(typeof(Worker) !== "undefined") {
+//        if(typeof(w) == "undefined") {
+//            w = new Worker("js/indexPageWebWorker.js");
+//        }
+//        w.onmessage = function(event) {
+////                        alert(event.data);
+//        };
+//    } else {
+//        result = "Sorry, your browser does not support Web Workers...";
+//        $('#snackbar').text(result);            
+//        $('#snackbar').addClass('show');            
+//        setTimeout(function(){$('#snackbar').removeClass('show');}, 3000);
+//    }
+//}               
+//startWorker();

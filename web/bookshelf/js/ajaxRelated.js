@@ -141,6 +141,14 @@ $(document).ready(function(){
             $('#snackbar').addClass('show');            
             setTimeout(function(){$('#snackbar').removeClass('show');}, 3000);
         });
-    });
+    });    
     
+//    function loadContenDashboard() {
+//        $.ajax({url: "ajaxDashboard.jsp", success: function(result){
+//            $(".profile-detail").html(result);
+//        }});        
+//        setTimeout(function(){ loadContenDashboard() }, 30000);
+//        //setTimeout(loadContenDashboard(),5000);
+//    }
+//    loadContenDashboard();    
 });
