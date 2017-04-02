@@ -107,11 +107,27 @@ $(document).ready(function(){
         isBookSearch = $(this).parent().find("input[name=booksearch]").is(":checked");        
         if(searchString.length >5 && !isBookSearch ) {
              $.post("ajaxStudentProfile.jsp", {query: searchString}, function(result){
-                $(".profile-detail").html(result);
+                 result = result.trim();                 
+                 if(result == "<h1>No result found</h1>") {
+                     $.post("ajaxBookInfo.jsp", {query: searchString}, function(result){
+                        $(".book-details").html(result);
+                    });
+                 } else {
+                    $(".profile-detail").html(result);
+                 }                
+                 // $(".profile-detail").html(result);
             });
         } else if (searchString.length >5 && isBookSearch ) {            
             $.post("ajaxBookInfo.jsp", {query: searchString}, function(result){
-                $(".book-details").html(result);
+                result = result.trim();                 
+                if(result == "NO Result found") {
+                    $.post("ajaxStudentProfile.jsp", {query: searchString}, function(result){
+                       $(".profile-detail").html(result);
+                   });
+                } else {
+                    $(".book-details").html(result);                   
+                }
+                // $(".book-details").html(result);
             });
         } else {
             alert("Not a valid input.");

@@ -91,7 +91,7 @@
 
 <%
         } else {
-            out.print("NOT result found");
+            out.print("NO Result found");
         }
     }
 %>

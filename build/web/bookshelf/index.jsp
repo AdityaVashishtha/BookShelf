@@ -46,8 +46,13 @@
 	<div class="main-menu">
                 <a href="index.jsp"><div class="menu-logo"></div></a>
 		<div class="search-div" id="id1">
-			<input class="search-input" type="text" name="search">
-			<input type="submit" name="searchSubmit" value="">
+                    <input class="search-input" id="main-search-input" type="text" name="search" autocomplete="off">
+                    <input id="searchSubmit" type="submit" name="searchSubmit" value="">
+                    <div class="search-suggestion">
+                        <ul>
+                            
+                        </ul>
+                    </div>
 		</div>
                 <div class="welcome-note  visible-lg-block visible-md-block">Welcome, 
                         <%
@@ -76,7 +81,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="home.jsp">
 						<img class="menu-image-button" src="images/icon/notebook(11).png" alt="menu-logo" >
 						<span>Search Book</span>
 					</a>
@@ -142,15 +147,40 @@
                         </div>     
                         <div class="dashboard-upper-block orangeborder notification-box col-lg-4">
                             <div class="dashboard-block-title myorange">Notification Area</div>
+                            <% 
+                            query = "select  * from notification where user_id = ? limit 5";
+                            String uid= (String) session.getAttribute("user_id");
+                            try {
+                                    Connection con = SQLConnection.createConnection();
+                                    PreparedStatement ps = con.prepareStatement(query);
+                                    ps.setString(1, uid);
+                                    ResultSet rs = ps.executeQuery();
+                                    while (rs.next()) {
+                                        String content = rs.getString("content");
+                                        String type = rs.getString("type");
+                                        String typeString = "Info! ";
+                                        String [] color = {"greencolor", "bluecolor", "yellowcolor", "redcolor"};
+                                        int typeint =0;
+                                        if(type.equals("w")) {
+                                            typeint=2;
+                                            typeString = "Warning! ";
+                                        } else if(type.equals("d")) {
+                                            typeint=3;
+                                            typeString = "Danger! ";
+                                        } else if(type.equals("a")) {
+                                            typeString = "Alert! ";
+                                            typeint=1;
+                                        }
+                                        %>
                             <div class="notification-slide">
-                                <strong class="redcolor">Warning!</strong> Better check yourself, you're not looking too good.
+                                <strong class="<%= color[typeint] %>"><%= typeString %></strong> <%= content %>
                             </div>
-                            <div class="notification-slide">
-                                <strong class="greencolor">Well done!</strong> Your request for approval is accepted.
-                            </div>
-                            <div class="notification-slide">
-                                <strong class="yellowcolor">Check it!</strong> A request for update is just arrived.
-                            </div>
+                            <%
+                                    }
+                                } catch (Exception e) {
+                                }
+                            %>
+                           
                         </div>                        
                         <div class="dashboard-upper-block col-lg-8">
                             <div class="dashboard-block darkblueborder col-lg-5">
@@ -204,6 +234,8 @@
         <script src="js/path.min.js"></script>        
         <script type="text/javascript" src="js/ajaxRelated.js"></script>        
 	<script type="text/javascript" src="js/index.js"></script>        
-        <script type="text/javascript" src="js/validate.js"></script>                             
+        <script type="text/javascript" src="js/validate.js"></script>   
+                
+        <script type="text/javascript" src="js/ajaxIndexPage.js"></script>
 </body>
 </html>

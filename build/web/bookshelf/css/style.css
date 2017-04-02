@@ -666,6 +666,35 @@ ul > .desc {
 }
 
 /*FOR DASHBOARD PURPOSE*/
+
+
+
+/* For book page */
+
+.book-page {
+    border: 1px solid crimson;
+    min-height: 600px;
+}
+.book-page > .book-page-image > img {
+    width: 300px;
+    max-height: 400px;
+}
+.book-page-details {
+    min-height: 400px;
+    box-sizing: border-box;
+    padding-left: 0px;
+}
+.book-page > .book-page-details > .book-page-title {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    font-size: 1.5em;
+    color: #FEFEFE;
+    padding: 5px;   
+}
+
+/* For book page */
+
 footer {
 	background: #ededed;
 	width: 100%;
@@ -680,7 +709,6 @@ footer {
 	bottom: 5px;
 	right: 5px;
 }
-
 
 
 /*	This is Second Mode 	*/

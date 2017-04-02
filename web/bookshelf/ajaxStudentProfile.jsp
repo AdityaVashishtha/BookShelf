@@ -3,7 +3,6 @@
     Created on : 16 Mar, 2017, 10:45:41 AM
     Author     : aditya
 --%>
-
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.bookshelf.utillity.SQLConnection"%>
