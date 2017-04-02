@@ -11,19 +11,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String q = request.getParameter("squery");
-    int limit = Integer.parseInt(request.getParameter("limit"));
+    int limit = Integer.parseInt(request.getParameter("limit")); 
+    int count = 0;
     if(q.length() > 0) {
-        String query = "select * from book_info where (isbn like ? ) or (title like ? ) or (description like ? ) limit ?, ?;";
+        String query = "select * from book_info where (isbn like ? ) or (title like ? ) or (description like ? ) or (author like ? ) limit ?, ?;";
         try {
             Connection connection = SQLConnection.createConnection();
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, "%"+q+"%");
             ps.setString(2, "%"+q+"%");
             ps.setString(3, "%"+q+"%");
-            ps.setInt(4,limit);
-            ps.setInt(5,limit+10);
+            ps.setString(4, "%"+q+"%");
+            ps.setInt(5,limit);
+            ps.setInt(6,limit+10);
             ResultSet rs = ps.executeQuery();              
             while(rs.next()) {
+                count++ ;
                 String title = rs.getString("title");
                 String author = rs.getString("author");
                 String desc = rs.getString("description");
@@ -47,7 +50,7 @@
               %>
                 <div class="result-line">
                         <h2>
-                            <a href=""><%= title %> - <%= author %></a>
+                            <a href="book.jsp?isbn=<%= isbn %>"><%= title %> - <%= author %></a>
                         </h2>
                         <div class="content">
                             <img class="thumbnail" src="<%= thumbnail %>" alt="search result image" />
@@ -62,7 +65,7 @@
               <%
             }  
             rs.first();
-            if(!rs.next()) {
+            if(count == 0 ) {
                 out.print("No result found");
             }
         } catch (Exception e) {

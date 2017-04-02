@@ -671,29 +671,103 @@ ul > .desc {
 
 /* For book page */
 
-.book-page {
-    border: 1px solid crimson;
+.book-page {        
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 60px;
     min-height: 600px;
+    padding-bottom: 10px;
+    margin: 40px;
+    overflow: auto;
+}
+.book-page > .book-page-image  {    
+    box-sizing: border-box;
+    padding-left: 5px;
 }
 .book-page > .book-page-image > img {
-    width: 300px;
+    width: 250px;
     max-height: 400px;
 }
 .book-page-details {
-    min-height: 400px;
-    box-sizing: border-box;
-    padding-left: 0px;
+    min-height: 400px;    
+    padding-left: 10px;
 }
-.book-page > .book-page-details > .book-page-title {
+.book-page > .book-page-title {
     width: 100%;
     position: absolute;
+    top: 0px;
+    left: 0px;
     text-align: center;
     font-size: 1.5em;
     color: #FEFEFE;
     padding: 5px;   
 }
-
+.book-page-details > ul > li {    
+    position: relative;
+}
+.book-page-details > ul > li > .header-side {    
+    font-size: 1.25em;
+    color: #FF4C4C;                        
+}
+.book-page-details > ul > li > .p-header-side {    
+    font-size: 1.25em;
+    color: #5c33e9;                        
+}
+.book-page-details > ul > li > .header-content {
+    color: #585858;
+    font-size: 1.1em;
+    width: 100%;    
+    padding-left: 1em;
+}
+.book-page-box {
+    height: 180px;    
+}
+.book-page-box > .book-page-box-content {
+    padding: 0px;
+    text-align: center;
+    font-size: 1.95em;
+    font-weight: bold;    
+    padding-top: 1.75em;
+}
+.book-page-box > .book-page-box-title {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    height: 40px;
+    font-weight: bold;
+    padding-top: 0.50em;
+    font-size: 1.20em;
+    color: #FEFEFE;
+    text-align: center;
+}
+.notify-me {    
+    position: absolute;
+    top:50xp;
+    right: 50px;  
+    z-index: 10;
+}
 /* For book page */
+
+/*For Profile page */
+.profile-page {
+    min-height: 600px;
+    padding-top: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.profile-page > .profile-page-title {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #FEFEFE;
+    padding: 5px;   
+}
+/*For Profile page */
+
 
 footer {
 	background: #ededed;
@@ -760,7 +834,9 @@ footer {
 		margin: 2.5%;		
 	}
 /*		This Additional CSS is only for Profile Page 	*/
-
+        .book-page-details {
+            padding-top: 50px; 
+        }
 }
 
 /*This is Third Mode*/
@@ -827,4 +903,9 @@ footer {
 		margin: 2.5%;		
 	}
 /*		This Additional CSS is only for Profile Page 	*/
+
+        .book-page-details {
+            padding-top: 50px; 
+        }
+
 }

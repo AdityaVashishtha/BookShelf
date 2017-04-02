@@ -1,7 +1,8 @@
 $(document).ready(function (){
             
     $('#main-search-input').keyup(function (e) {
-        q = $(this).val();        
+        q = $(this).val();  
+        q = q.trim();
         x = e.keyCode;        
         if((q.length > 3) && x!=13) {            
             $.post("ajaxSearchSuggestion.jsp", {squery: q}, function(result){                
@@ -29,6 +30,7 @@ $(document).ready(function (){
     
     $('#searchSubmit').click(function () {        
         q = $('#main-search-input').val();
+        q = q.trim();
         if(q.length > 0) {
             $('.search-suggestion').hide();
             limit = 0;
@@ -41,7 +43,7 @@ $(document).ready(function (){
         }        
     }); 
     
-    $('#main-search-input').blur(function (e) {
-        $('.search-suggestion').hide();
+    $('#main-search-input').blur(function (e) {        
+        //$('.search-suggestion').hide();        
     });
 });

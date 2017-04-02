@@ -21,7 +21,7 @@
             ps.setString(3, "%"+q+"%");
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
-              out.print("<li><a>"+ rs.getString("title") +"</a></li>");
+              out.print("<li><a href=book.jsp?isbn="+rs.getString("isbn")+">"+ rs.getString("title") +"</a></li>");
             }
         } catch (Exception e) {
             out.print(e);
