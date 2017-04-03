@@ -87,9 +87,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="bookLogs.jsp">
 						<img class="menu-image-button" src="images/icon/bookmark.png" alt="menu-logo" >
-						<span>Search Book</span>
+						<span>Book Logs</span>
 					</a>
 				</li>
 				<li>
