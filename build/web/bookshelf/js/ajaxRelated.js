@@ -24,7 +24,7 @@ $(document).ready(function(){
         $.ajax({url: "ajaxUpdateUserInfo.jsp", success: function(result){
             $(".profile-detail").html(result);
         }});
-    });
+    }); 
 
 //    this function to load student profile
     function loadProfile(userId) {
@@ -35,7 +35,20 @@ $(document).ready(function(){
 //    this function to load student profile
     
     
-//    ISBN No. content fetch
+//    ISBN No. content fetch   
+    $(document).on('click','#fetch_user_info',function () {
+       v = $(this).parent().find(".input");
+       uid = v.val();
+       if(uid.length > 5) {
+            $.post("getUserInfo.jsp", {query: uid}, function(result){
+                    $(".input-suggestion").html(result);
+            });
+       }       
+       else {
+           alert("Invalid User id");
+       }
+    });
+
     $(document).on('click','#fetch_book',function () {
         
         v = $(this).parent().find(".input");

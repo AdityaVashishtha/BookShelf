@@ -22,7 +22,7 @@
                 response.sendRedirect("index.jsp");
             }
         %>
-        <title>Change Password,<%= username %> </title>
+        <title>User Notification</title>
         <link type="text/css" href="./css/bootstrap.min.css" rel="stylesheet">    
 
         <link rel="shortcut icon" type="image/png" href="images/icon/open-book.png" />
@@ -32,8 +32,8 @@
                 width: 40%;
                 box-sizing: border-box;
                 min-width: 450px;
-                border: 2px solid #00A5E2;
-                height: 400px;
+                border: 2px solid #04B173;
+                height: 500px;
                 position: absolute;
                 top: 100px;
                 left: 50%;
@@ -71,29 +71,28 @@
                 box-sizing: border-box;
                 top: 0px;
                 left: 0px;
-                background: #00A5E2;
+                background: #04B173;
                 width: 100%;
                 padding: 10px;
                 text-align: center;
                 color: #FEFEFE;
                 font-size: 1.5em;
             }
-            .main-box > .form > form > input[type=password] {                
+            .main-box > .form > form > input[type=text],.main-box > .form > form > textarea {                
                 border: 0px;
                 width: 80%;
                 margin-left: 10%;
                 margin-bottom: 20px;
-                border-bottom: 2px solid #00A5E2;
+                border-bottom: 2px solid #04B173;
                 font-size: 1.5em;
-                padding: 10px;
-                text-align: center;
+                padding: 10px;                
             }
             .main-box > .form > form > input[type=submit] {                
                 border: 0px;
                 width: 150px;
                 margin-left: 10%;
                 margin-bottom: 20px;
-                border-bottom: 2px solid #00A5E2;
+                border-bottom: 2px solid #04B173;
                 font-size: 1.5em;
                 padding: 10px;
                 text-align: center;
@@ -102,11 +101,11 @@
     </head>
     <body>
         <div class="main-box">
-            <div class="title">Change Password, <%= username %></div>
+            <div class="title">Request Admin UID:<%= username %></div>
             <div class="form">
-                   <form action="#" method="post">
-                        <input type="password" placeholder="Old Password" name="oldpwd" />
-                        <input type="password" placeholder="New Password" name="newpwd" />                
+                   <form action="#" method="post">                        
+                        <input type="text" placeholder="Subject" name="subject" />
+                        <textarea placeholder="Message goes here" name="message"></textarea>
                         <input type="submit" name="update" value="Submit" />                
                     </form>
             </div>            
@@ -114,43 +113,28 @@
             <a href="index.jsp"><- Back to Home</a>
             
             <%
-                String oldPassword = request.getParameter("oldpwd");
-                String newPassword = request.getParameter("newpwd");
-                if(oldPassword!=null && newPassword != null && username != null) {
-                    if( (oldPassword.length() > 5) && (newPassword.length() > 5) ) {                        
-                        
-                        MessageDigest md5 = MessageDigest.getInstance("MD5");
-                        md5.update(StandardCharsets.UTF_8.encode(oldPassword));
-                        String hashedPass = String.format("%032x", new BigInteger(1, md5.digest())).toString();         
-                        
-                        String query = "select password from users where user_id = ? ";
-                        Connection con = SQLConnection.createConnection();
+                String subject = request.getParameter("subject");
+                String message = request.getParameter("message");
+                String type = "w";
+                String adminid = "admin1234";
+                if(subject!=null && message != null && username != null) {
+                    if( (subject.length() > 25) && (message.length() > 25) ) {                                                
+                        String query = "INSERT INTO `notification`(`user_id`, `content`, `type`, `link`, `from_user_id`) VALUES (?,?,?,?,?);";
+                        Connection con = SQLConnection.createConnection();                        
                         PreparedStatement ps = con.prepareStatement(query);
-                        ps.setString(1, username);
-                        ResultSet rs = ps.executeQuery();
-                        if(rs.next()) {
-                            String pass = rs.getString(1);
-                            if(pass.equals(hashedPass)) {
-                                
-                                md5.update(StandardCharsets.UTF_8.encode(newPassword));
-                                hashedPass = String.format("%032x", new BigInteger(1, md5.digest())).toString();     
-                                
-                                query = "update users set password=? where user_id = ? ";
-                                ps = con.prepareStatement(query);
-                                ps.setString(1, hashedPass);
-                                ps.setString(2, username);
-                                int x = ps.executeUpdate();
-                                if(x>0) {
-                                    out.print("<div class='notify success'>Password updated.</div>");
-                                } else {
-                                    out.print("<div class='notify danger'>Error occured!</div>");
-                                }                                                                
-                            } else {
-                                out.print("<div class='notify danger'>Invalid Password!</div>");
-                            }
-                        }
+                        ps.setString(1, adminid);
+                        ps.setString(2, message);
+                        ps.setString(3, type);
+                        ps.setString(4, subject);
+                        ps.setString(5, username);
+                        int x = ps.executeUpdate();
+                        if(x > 0) {
+                            out.print("<div class='notify success'>Request sent!</div>");
+                        } else {
+                            out.print("<div class='notify danger'>Some Error occured!!</div>");
+                        }                        
                     } else {
-                        out.print("<div class='notify info'>Password length is Small!</div>");
+                        out.print("<div class='notify info'>Subject or Message length is Small!</div>");
                     }
                 }
                 %>            

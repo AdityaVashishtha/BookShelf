@@ -33,35 +33,23 @@
 		<div class="float-menu">
 			<ul>
 				<li>
-					<a href="">
-						<img class="menu-image-button" src="images/icon/notebook.png" alt="menu-logo" >
-						<span>Take Note</span>
+					<a href="./profile.jsp">
+						<img class="menu-image-button" src="images/icon/student.png" alt="menu-logo" >
+						<span>My Profile</span>
 					</a>
-				</li>
-				<li>
-					<a href="">
-						<img class="menu-image-button" src="images/icon/notebook(11).png" alt="menu-logo" >
-						<span>Search Book</span>
+				</li>	
+                                <li>
+					<a href="./notifyAdmin.jsp">
+						<img class="menu-image-button" src="images/icon/notebook(6).png" alt="menu-logo" >
+						<span>Notify Admin</span>
 					</a>
-				</li>
-				<li>
-					<a href="">
-						<img class="menu-image-button" src="images/icon/bookmark.png" alt="menu-logo" >
-						<span>Search Book</span>
+				</li>	
+                                <li>
+                                    <a href="./changePassword.jsp">
+						<img class="menu-image-button" src="images/icon/notebook(14).png" alt="menu-logo" >
+						<span>Password</span>
 					</a>
-				</li>
-				<li>
-					<a href="">
-						<img class="menu-image-button" src="images/icon/pencil-case.png" alt="menu-logo" >
-						<span>Search Book</span>
-					</a>
-				</li>
-				<li>
-					<a href="">
-						<img class="menu-image-button" src="images/icon/notebook(20).png" alt="menu-logo" >
-						<span>Search Book</span>
-					</a>
-				</li>
+				</li>	
                                 <li>
 					<a href="../Logout">
 						<img class="menu-image-button" src="images/icon/logout.png" alt="menu-logo" >
