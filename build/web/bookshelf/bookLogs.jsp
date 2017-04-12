@@ -64,7 +64,7 @@
         <table class="table table-hover">            
             <tr>
                 <th>#</th>
-                <th>Boodk ID</th>
+                <th>Book ID</th>
                 <th>Book Name</th>
                 <th>User ID</th>
                 <th>User Name</th>

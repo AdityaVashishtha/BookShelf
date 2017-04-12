@@ -82,7 +82,7 @@
 				</li>
 				<li>
 					<a href="home.jsp">
-						<img class="menu-image-button" src="images/icon/notebook(11).png" alt="menu-logo" >
+						<img class="menu-image-button" src="images/icon/notebook(1).png" alt="menu-logo" >
 						<span>Search Book</span>
 					</a>
 				</li>
@@ -100,7 +100,7 @@
 				</li>
 				<li>
                                     <a href="changePassword.jsp">
-						<img class="menu-image-button" src="images/icon/notebook(20).png" alt="menu-logo" >
+						<img class="menu-image-button" src="images/icon/notebook(14).png" alt="menu-logo" >
 						<span>Change Password</span>
 					</a>
 				</li>

@@ -20,45 +20,14 @@
     </head>
     <body>
         <br>
-        <a  href="./index.jsp"><button class="button btn btn-primary">HOME</button></a>
-        <br>
-        <br>
-        <form method="get" action="bookLogs.jsp">
-            <input type="text" placeholder="book id" name="bookid" />
-            <input type="text" placeholder="ISBN Num" name="isbn" />
-            <input type="text" placeholder="User id" name="userid" />
-            <input type="text" placeholder="Date Start" name="dateS" />
-            <input type="text" placeholder="Date End" name="dateE" />
-            <input type="submit" name="submit" value="Search" />
-        </form>        
+        <a  href="./index.jsp"><button class="button btn btn-primary">HOME</button></a>                       
         <br>           
-        <%
-           String book_id = request.getParameter("bookid");
-           String isbn = request.getParameter("isbn");
-           String date_start = request.getParameter("dateS");
-           String date_end = request.getParameter("dateE");
-           String temp = request.getParameter("in_table");
-           String uid = request.getParameter("userid");
-           int inTable = 0;
-           if(temp != null) {
-               inTable = Integer.parseInt(temp);
+        <%           
+           String uid = (String) session.getAttribute("user_id");           
+           if(uid ==null)           {
+               response.sendRedirect("index.jsp");
            }
-           String query = "select *, date_format(submission_date,'%d, %b %Y') as sdate, date_format(due_date,'%d, %b %Y') as ddate  from book Natural Join book_info Natural Join receipt Natural Join users where 1 ";
-           if(book_id != null && book_id.length() > 0) {
-               query += " and book_id = "+book_id;
-           } 
-           if(isbn !=null && isbn.length() > 0) {
-               query += " and isbn = " + isbn;
-           }
-           if(uid != null && uid.length() > 0) {
-               query += " and user_id = "+ uid;
-           } 
-           if(date_start != null && date_start.length() > 0 ) {
-               query += " and issue_date >= date_format('"+date_start+"','%Y-%m-%d %H:%i:%S')";               
-           }
-           if (date_end !=null && date_end.length() > 0 ) {
-               query += " and issue_date <= date_format('"+date_end+"','%Y-%m-%d %H:%i:%S')";               
-           }           
+           String query = "select *, date_format(submission_date,'%d, %b %Y') as sdate, date_format(due_date,'%d, %b %Y') as ddate  from book Natural Join book_info Natural Join receipt Natural Join users where user_id ='"+uid+"'";                      
         %> 
         
         <table class="table table-hover">            
@@ -77,6 +46,7 @@
                 Connection con = SQLConnection.createConnection();
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(query);
+                int tFine = 0;
                 int sNum = 0;
                 while(rs.next()) {
                     String bookid = rs.getString("book_id");
@@ -86,6 +56,7 @@
                     String IssueDate= rs.getString("sdate");
                     String dueDate= rs.getString("ddate");
                     int fine = rs.getInt("fine");
+                    tFine += fine;
                     sNum++;
             %> 
                 <tr>
@@ -100,7 +71,17 @@
                 </tr>  
             <%
                 }
-            %>                                  
+            %>      
+            <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td><h4><b>Total Fine</b></h4></td>
+                    <td><h4><b><%= tFine %></b></h4></td>
+                </tr>  
         </table>        
     </body>
 </html>

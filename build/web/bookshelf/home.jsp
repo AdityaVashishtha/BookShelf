@@ -39,6 +39,12 @@
 					</a>
 				</li>	
                                 <li>
+                                    <a href="./userHistory.jsp">
+						<img class="menu-image-button" src="images/icon/notebook(18).png" alt="menu-logo" >
+						<span>My History</span>
+					</a>
+				</li>	
+                                <li>
 					<a href="./notifyAdmin.jsp">
 						<img class="menu-image-button" src="images/icon/notebook(6).png" alt="menu-logo" >
 						<span>Notify Admin</span>
