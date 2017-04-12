@@ -156,7 +156,7 @@
                                     ps.setString(1, uid);
                                     ResultSet rs = ps.executeQuery();
                                     while (rs.next()) {
-                                        String content = rs.getString("content");
+                                        String content = rs.getString("link");
                                         String type = rs.getString("type");
                                         String typeString = "Info! ";
                                         String [] color = {"greencolor", "bluecolor", "yellowcolor", "redcolor"};
