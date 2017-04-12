@@ -141,9 +141,16 @@ form > a {
 	color: #56A0D3;
 }
 .book-upload-box > .input-suggestion > .content {
-    display: block;
+    display: block;    
 }
-
+.content > .notify-user {    
+    text-align: center;  
+    background: rgba(255,100,100,0.75);
+    font-size: 1em;
+    color: #FEFEFE;
+    padding: 5px;
+    margin: 10px;    
+}
 .book-upload-box > .input-suggestion > .content > form > .input-field > .input{
     font-size: 0.95em;
     height: 40px;

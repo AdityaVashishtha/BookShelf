@@ -93,9 +93,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="#/update_user_info" id="update_user_info">
 						<img class="menu-image-button" src="images/icon/pencil-case.png" alt="menu-logo" >
-						<span>Search Book</span>
+						<span>Update User Info</span>
 					</a>
 				</li>
 				<li>
@@ -235,6 +235,71 @@
         <script type="text/javascript" src="js/ajaxRelated.js"></script>        
 	<script type="text/javascript" src="js/index.js"></script>        
         <script type="text/javascript" src="js/validate.js"></script>   
+        <script>
+            function checkEveryThing() {                                
+                isValidField = true;
+                errorString = "";
+                var X = document.querySelectorAll("input[name=fname]")[0];
+                fname = X.value;               
+                X = document.querySelectorAll("input[name=uid]")[0];
+                uid = X.value;                
+                X = document.querySelectorAll("input[name=address]")[0];
+                address = X.value;
+                X = document.querySelectorAll("input[name=mobile]")[0];
+                mobile = X.value;
+                X = document.querySelectorAll("input[name=email]")[0];
+                email = X.value;
+                X = document.querySelectorAll("input[name=date]")[0];
+                date = X.value;
+                var isCorrect = /[1-9]|[@#$%]/.test(fname);
+                //alert(isCorrect);
+                if(isCorrect || fname.length < 8) {
+                        errorString += "<div class='notify-user'> Not a Valid Name </div>";
+                        isValidField = false;
+                }
+                //isCorrect = /[1-9]|[@#$%]/.test(pname);
+                if(uid.length < 6) {
+                        errorString += "<div class='notify-user'>Not a Valid User Id </div>";
+                        isValidField = false;
+                }
+                if(address.length < 10) {
+                        errorString += "<div class='notify-user'>Not a Valid Address </div>";
+                        isValidField = false;
+                }
+                isCorrect = /[a-z|1-9]*[@][a-z|1-9]*[.][a-z|1-9]*/.test(email);
+                if(!isCorrect || email.length < 8) {
+                        errorString += "<div class='notify-user'>Not a Valid Email</div>";
+                        isValidField = false;
+                }
+                isCorrect = /[a-z|@$%#]*/.test(mobile);
+                if(mobile.length < 10) { //|| (mobile.length < 10) || (mobile.length > 10)) {
+                        errorString += "<div class='notify-user'>Not a Valid Mobile</div>";
+                        isValidField = false;
+                }
+                isCorrect = date.split("/");                
+                day = isCorrect[0];
+                month = isCorrect[1];
+                year = isCorrect[2];
+                if(isCorrect <= 0 || day<0 || day>31 || month <1 || month > 12 || year < 2000 || year>2020 ) {
+                    errorString += "<div class='notify-user myred'>Not a Valid Date</div>";
+                    isValidField = false;
+                }                
+                $(".input-suggestion").find(".content").html(errorString);
+                return isValidField;
+        }        
+        $(document).on("mouseover","#registeruser",function () {
+            if(!checkEveryThing()) {
+                $(this).attr("disabled","true");
+                $(this).css("cursor","not-allowed");    
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                //scroll(0,0);                                                 
+            } else {
+                $(this).attr("disabled","false");
+                $(this).css("cursor","pointer");
+                //alert(x);
+            }
+        });       
+        </script>
                 
         <script type="text/javascript" src="js/ajaxIndexPage.js"></script>
 </body>

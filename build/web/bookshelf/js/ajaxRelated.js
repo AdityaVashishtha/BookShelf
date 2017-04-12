@@ -20,6 +20,11 @@ $(document).ready(function(){
         }});
     });
     
+    $("#update_user_info").click(function () {
+        $.ajax({url: "ajaxUpdateUserInfo.jsp", success: function(result){
+            $(".profile-detail").html(result);
+        }});
+    });
 
 //    this function to load student profile
     function loadProfile(userId) {
@@ -98,6 +103,11 @@ $(document).ready(function(){
             $('.content').find('input[name=isbn]').val(isbn);
             
         }});
+    });
+    
+    
+    $(document).on('click','#fetch_book',function () {
+        alert("UPADATE USER");
     });
     
     

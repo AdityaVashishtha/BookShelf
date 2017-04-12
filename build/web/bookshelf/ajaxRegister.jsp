@@ -7,7 +7,7 @@
             <h2>Registration</h2>
     </div>
     <div class="input-form">
-        <form action="../Register" method="POST" enctype="multipart/form-data" onsubmit="checkEveryThing(this.id)">
+        <form action="../Register" method="POST" enctype="multipart/form-data" onsubmit="checkEveryThing()">
                     <div class="input-field">
                         <label class="input-label">
                                     <span>
@@ -112,7 +112,7 @@
                             <input class="input" type="file" name="image">						
                     </div>
 
-                    <input class="input-submit" type="submit" name="register" value="Register">							
+                            <input class="input-submit" id="registeruser" type="submit" name="register" disabled="true" value="Register">							
             </form>
     </div>
     <div class="input-suggestion">	
