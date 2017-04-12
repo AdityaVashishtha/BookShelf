@@ -99,9 +99,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+                                    <a href="changePassword.jsp">
 						<img class="menu-image-button" src="images/icon/notebook(20).png" alt="menu-logo" >
-						<span>Search Book</span>
+						<span>Change Password</span>
 					</a>
 				</li>
                                 <li>
